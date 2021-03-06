@@ -29,7 +29,6 @@ export default function CustomerForm() {
             <Form
                 value={value}
                 onChange={nextValue => setValue(nextValue)}
-                onSubmit={({ value }) => { }}
                 className="customer-form"
             >
                 <div className="form-column">
