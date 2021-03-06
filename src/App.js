@@ -1,5 +1,5 @@
 import './App.css';
-import { Welcome } from './screens';
+import { Customer } from './screens';
 import { Grommet } from 'grommet';
 import 'typeface-roboto'
 
@@ -19,7 +19,7 @@ function App() {
   return (
     <Grommet theme={theme}>
       <div className="App">
-        <Welcome />
+        <Customer></Customer>
       </div>
     </Grommet>
   )
