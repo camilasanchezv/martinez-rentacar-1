@@ -1,5 +1,7 @@
 import Title from './Title';
+import CustomerForm from './CustomerForm';
 
 export {
-    Title
+    Title,
+    CustomerForm
 }

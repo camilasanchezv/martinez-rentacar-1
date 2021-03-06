@@ -1,5 +1,7 @@
 import Welcome from './Welcome';
+import Customer from './Customer';
 
 export {
-    Welcome
+    Welcome,
+    Customer
 }
