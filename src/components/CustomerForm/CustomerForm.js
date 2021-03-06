@@ -48,8 +48,8 @@ export default function CustomerForm() {
                             mask={birthDateMask}
                         />
                     </FormField>
-                    <FormField className="input" label="Dirección">
-                        <TextInput placeholder="Alfredo Arocena 0123" />
+                    <FormField className="input" type="email" label="Email">
+                        <TextInput placeholder="agustinfernandez@gmail.com" />
                     </FormField>
                     <FormField className="input" label="Teléfono">
                         <TextInput type="number" placeholder="26045555" />
