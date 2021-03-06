@@ -59,5 +59,6 @@ export default function CustomerForm() {
             <Box className="button" direction="row" gap="medium">
                 <Button type="submit" primary label="Enviar" />
             </Box>
-        </div>)
+        </div>
+    )
 }

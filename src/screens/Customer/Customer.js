@@ -9,7 +9,7 @@ export default function Customer() {
             <Card className="card" background="light-1">
                 <Heading className="card-header" margin="none">NUEVO CLIENTE</Heading>
                 <CardBody className="card-body">
-                    <CustomerForm></CustomerForm>
+                    <CustomerForm />
                 </CardBody>
             </Card>
         </div>
