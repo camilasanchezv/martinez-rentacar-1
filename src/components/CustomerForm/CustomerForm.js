@@ -12,7 +12,7 @@ const birthDateMask = [
     {
         length: 2,
         regexp: /^0[1-9]$|^1[0-2]$|^[0-9]$/,
-        placeholder: '04',
+        placeholder: '02',
     },
     { fixed: ' / ' },
     {
@@ -25,11 +25,10 @@ const birthDateMask = [
 export default function CustomerForm() {
     const [value, setValue] = React.useState({});
     return (
-        <div>
+        <div className="customer-form-container">
             <Form
                 value={value}
                 onChange={nextValue => setValue(nextValue)}
-                onReset={() => setValue({})}
                 onSubmit={({ value }) => { }}
                 className="customer-form"
             >
@@ -41,21 +40,7 @@ export default function CustomerForm() {
                         <TextInput placeholder="Fernández" />
                     </FormField>
                     <FormField className="input" label="Cédula de Identidad">
-                        <MaskedInput
-                            mask={[
-                                {
-                                    length: 7,
-                                    regexp: /^([0-9]|[0-9][0-9]|[0-9][0-9][0-9]|[0-9][0-9][0-9][0-9]|[0-9][0-9][0-9][0-9][0-9]|[0-9][0-9][0-9][0-9][0-9][0-9]|[0-9][0-9][0-9][0-9][0-9][0-9][0-9])$/,
-                                    placeholder: '1234567',
-                                },
-                                { fixed: ' - ' },
-                                {
-                                    length: 1,
-                                    regexp: /^([0-9])$/,
-                                    placeholder: '8',
-                                },
-                            ]}
-                        />
+                        <TextInput type="number" placeholder="12345678" />
                     </FormField>
                 </div>
                 <div className="form-column">
