@@ -1,6 +1,6 @@
-import { Card, CardBody, Heading, } from 'grommet';
+import { Card, CardBody, Heading } from 'grommet';
 import React from 'react';
-import './styles.css';
+import './styles.scss';
 import { CustomerForm } from '../../components'
 
 export default function Customer() {

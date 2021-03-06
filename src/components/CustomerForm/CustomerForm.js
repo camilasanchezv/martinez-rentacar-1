@@ -1,6 +1,26 @@
 import React from 'react';
-import './styles.css';
+import './styles.scss';
 import { Form, FormField, TextInput, Box, Button, MaskedInput } from 'grommet';
+
+const birthDateMask = [
+    {
+        length: 2,
+        regexp: /^[0-2][0-9]$|^3[0-1]$|^[0-9]$/,
+        placeholder: '29',
+    },
+    { fixed: ' / ' },
+    {
+        length: 2,
+        regexp: /^0[1-9]$|^1[0-2]$|^[0-9]$/,
+        placeholder: '04',
+    },
+    { fixed: ' / ' },
+    {
+        length: 4,
+        regexp: /^([1-2]|19|20|19[0-9]|20[0-9]|19[0-9][0-9]|20[0-9][0-9])$/,
+        placeholder: '1992',
+    },
+]
 
 export default function CustomerForm() {
     const [value, setValue] = React.useState({});
@@ -41,25 +61,7 @@ export default function CustomerForm() {
                 <div className="form-column">
                     <FormField className="input" label="Fecha de Nacimiento">
                         <MaskedInput
-                            mask={[
-                                {
-                                    length: 2,
-                                    regexp: /^[0-2][0-9]$|^3[0-1]$|^[0-9]$/,
-                                    placeholder: '29',
-                                },
-                                { fixed: ' / ' },
-                                {
-                                    length: 2,
-                                    regexp: /^0[1-9]$|^1[0-2]$|^[0-9]$/,
-                                    placeholder: '04',
-                                },
-                                { fixed: ' / ' },
-                                {
-                                    length: 4,
-                                    regexp: /^([1-2]|19|20|19[0-9]|20[0-9]|19[0-9][0-9]|20[0-9][0-9])$/,
-                                    placeholder: '1992',
-                                },
-                            ]}
+                            mask={birthDateMask}
                         />
                     </FormField>
                     <FormField className="input" label="Dirección">
