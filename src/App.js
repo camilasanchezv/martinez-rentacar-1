@@ -2,6 +2,7 @@ import './App.css';
 import { Car, Customer } from './screens';
 import { Grommet } from 'grommet';
 import 'typeface-roboto'
+import { CustomersList } from './components';
 
 
 const theme = {
@@ -19,7 +20,7 @@ function App() {
   return (
     <Grommet theme={theme}>
       <div className="App">
-        <Car />
+        <CustomersList />
       </div>
     </Grommet>
   )

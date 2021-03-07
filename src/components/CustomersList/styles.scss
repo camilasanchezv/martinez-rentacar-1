@@ -1,0 +1,37 @@
+.customers-list{
+
+    .customers-list-card{
+        width: 90vw;
+        height: 90vh;
+    }
+
+    .list-column{
+        display: flex;
+        align-items: center;
+
+        width: 100%;
+    }
+    
+    .arrow{
+        width: 1vw;
+        height: 1vw;
+        padding-left: 1vw;
+    }
+
+    span {
+        font-weight: normal ;
+        padding: 0.5vw 1vw;
+        font-size: 1.3vw;
+    }
+
+    tbody {
+        th{
+            padding: 0 1vw ;
+        }
+        td{
+            padding: 0 1vw ;
+         }
+    }
+
+    
+}
