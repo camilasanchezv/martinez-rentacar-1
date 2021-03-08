@@ -53,26 +53,26 @@ export default function CustomerForm() {
                 onSubmit={(e) => submitHandler(e)}
             >
                 <div className="form-column">
-                    <FormField className="input" name="firstName" label="Nombre">
+                    <FormField className="input" label="Nombre">
                         <TextInput placeholder="Agustín" name="firstName" />
                     </FormField>
-                    <FormField className="input" name="lastName" label="Apellido">
+                    <FormField className="input" label="Apellido">
                         <TextInput placeholder="Fernández" name="lastName" />
                     </FormField>
-                    <FormField className="input" name="id" label="Cédula de Identidad">
+                    <FormField className="input" label="Cédula de Identidad">
                         <TextInput type="number" name="id" placeholder="12345678" />
                     </FormField>
                 </div>
                 <div className="form-column">
-                    <FormField className="input" name="birthDate" label="Fecha de Nacimiento">
+                    <FormField className="input" label="Fecha de Nacimiento">
                         <MaskedInput name="birthDate"
                             mask={birthDateMask}
                         />
                     </FormField>
-                    <FormField className="input" name="email" type="email" label="Email">
+                    <FormField className="input" type="email" label="Email">
                         <TextInput name="email" placeholder="agustinfernandez@ejemplo.com" />
                     </FormField>
-                    <FormField className="input" name="phone" label="Teléfono">
+                    <FormField className="input" label="Teléfono">
                         <TextInput type="number" name="phone" placeholder="26045555" />
                     </FormField>
                 </div>

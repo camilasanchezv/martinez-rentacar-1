@@ -6,11 +6,11 @@ export const listCustomers = async () => {
     })
 }
 
-export const createCustomer = async (first_name, last_name, ci, phone, email, birthDate) => {
+export const createCustomer = async (firstName, lastName, id, phone, email, birthDate) => {
     return unauthAxiosCall('customer/create', {
         method: "POST",
         body: {
-            first_name, last_name, ci, phone, email, birthDate
+            firstName, lastName, id, phone, email, birthDate
         }
     })
 }
