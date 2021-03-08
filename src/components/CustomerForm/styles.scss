@@ -4,6 +4,7 @@
     text-align: start;
     width: 100%;
     display: flex;
+    flex-wrap: wrap;
     flex-direction: row;
     justify-content: space-between;
   }
@@ -16,6 +17,7 @@
 
   /* Form */
   .button {
+    width: 100%;
     margin-top: 38px;
     justify-content: center;
   }
