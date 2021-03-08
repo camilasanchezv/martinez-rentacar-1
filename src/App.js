@@ -1,8 +1,13 @@
-import './App.css';
-import { Car, Customer } from './screens';
+import './App.scss';
 import { Grommet } from 'grommet';
 import 'typeface-roboto'
+import MainRouter from './router';
+import SidebarNavigation from './components/Sidebar/Sidebar';
 
+import { Router } from "react-router-dom";
+import { createBrowserHistory } from "history";
+
+const history = createBrowserHistory();
 
 const theme = {
   global: {
@@ -17,11 +22,16 @@ const theme = {
 
 function App() {
   return (
-    <Grommet theme={theme}>
-      <div className="App">
-        <Car />
-      </div>
-    </Grommet>
+    <Router history={history}>
+      <Grommet theme={theme}>
+        <div className="app-container">
+          <SidebarNavigation />
+          <div className="content-container">
+            <MainRouter />
+          </div>
+        </div>
+      </Grommet>
+    </Router>
   )
 }
 
