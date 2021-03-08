@@ -6,6 +6,8 @@ import SidebarNavigation from './components/Sidebar/Sidebar';
 
 import { Router } from "react-router-dom";
 import { createBrowserHistory } from "history";
+import AppContextContainer from './context';
+import { Loading } from './components';
 
 const history = createBrowserHistory();
 
@@ -22,16 +24,20 @@ const theme = {
 
 function App() {
   return (
-    <Router history={history}>
-      <Grommet theme={theme}>
-        <div className="app-container">
-          <SidebarNavigation />
-          <div className="content-container">
-            <MainRouter />
+    <AppContextContainer>
+            <Loading /> 
+      <Router history={history}>
+        <Grommet theme={theme}>
+          <div className="app-container">
+            <SidebarNavigation />
+            <div className="content-container">
+              <MainRouter />
+            </div>
           </div>
-        </div>
-      </Grommet>
-    </Router>
+        </Grommet>
+      </Router>
+
+    </AppContextContainer>
   )
 }
 
