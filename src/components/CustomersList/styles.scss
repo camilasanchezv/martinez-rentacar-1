@@ -1,37 +1,66 @@
-.customers-list{
+.customers-list{    
+    width: 100%;
+    display: flex;
+    flex-direction: column;
 
-    .customers-list-card{
-        width: 90vw;
-        height: 90vh;
-    }
-
-    .list-column{
+    .customer-box{
         display: flex;
-        align-items: center;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
 
-        width: 100%;
-    }
-    
-    .arrow{
-        width: 1vw;
-        height: 1vw;
-        padding-left: 1vw;
-    }
+        .header-item {
+            width: calc(100% /6);
+            font-size: 100%;
 
-    span {
-        font-weight: normal ;
-        padding: 0.5vw 1vw;
-        font-size: 1.3vw;
-    }
+            padding: 0.1% 1%;
+            margin: 1% 0;
 
-    tbody {
-        th{
-            padding: 0 1vw ;
+            border-left: solid #7D4CDB 2px;
+
+            .arrow {
+                width: 7%;
+                height: auto;
+                padding-left: 5%;
+            }
         }
-        td{
-            padding: 0 1vw ;
-         }
+
+        .row-item{
+            width: calc(100% /6);
+            font-size: 100%;
+            padding: 1% calc(2px + 1%);
+
+            overflow: auto;
+        }
+        
     }
 
+    .header {
+        background-color: #f8f8f8;
+
+        div {
+            display:none
+        }
+
+        .first-item {
+            border-style: none;
+        }
+    }
+
+    // SCROLLBAR
+    /* width */
+    ::-webkit-scrollbar {
+    height: 5px;
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #f2f2f2;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #999999; 
+  }
     
 }

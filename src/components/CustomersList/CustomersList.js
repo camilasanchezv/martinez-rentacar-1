@@ -1,68 +1,44 @@
-import { Card, DataTable, Header, Text } from 'grommet';
-import React from 'react';
+import { Card, InfiniteScroll, Text, Box, Header } from 'grommet';
+import React, { useContext, useEffect } from 'react';
 import './styles.scss';
 import { Down } from 'grommet-icons'
+import { AppContext } from '../../context';
 
 export default function CustomersList() {
+    const context = useContext(AppContext)
+
+    useEffect(() => {
+        context.getCustomersList();
+    }, [])
+
+    const data = context.customers;
+
     return (
         <div className="customers-list">
-            <Card className="customers-list-card" background="light-1">
-                <DataTable
-                    columns={[
-                        {
-                            property: 'name',
-                            header: <Text className="list-column" margin="none">NOMBRE<Down className="arrow" /></Text>,
-
-                        },
-                        {
-                            property: 'surname',
-                            header: <Text className="list-column" margin="none">APELLIDO<Down className="arrow" /></Text>,
-                        },
-                        {
-                            property: 'email',
-                            header: <Text className="list-column" margin="none">EMAIL<Down className="arrow" /></Text>,
-                        },
-                        {
-                            property: 'id',
-                            header: <Text className="list-column" margin="none">DOCUMENTO<Down className="arrow" /></Text>,
-                        },
-                        {
-                            property: 'birthDate',
-                            header: <Text className="list-column" margin="none">NACIMIENTO<Down className="arrow" /></Text>,
-                        },
-                        {
-                            property: 'phone',
-                            header: <Text className="list-column" margin="none">TELÉFONO<Down className="arrow" /></Text>,
-                        },
-                    ]}
-                    data={[
-                        {
-                            name: 'Agustín',
-                            surname: 'Fernández',
-                            id: 12345678,
-                            email: 'agustinfernandez@gmail.com',
-                            birthDate: 29021992,
-                            phone: 27065555
-                        },
-                        {
-                            name: 'Camila',
-                            surname: 'Sánchez',
-                            id: 49602960,
-                            email: 'contactcamilasanchez@gmail.com',
-                            birthDate: 17042000,
-                            phone: 27066099
-                        },
-                        {
-                            name: 'Matías',
-                            surname: 'Martínez',
-                            id: 48592733,
-                            email: 'matiasmartineeez@gmail.com',
-                            birthDate: 16012000,
-                            phone: 27056909
-                        },
-                    ]}
-                />
-            </Card>
+            <Header className="customer-box header">
+                <Text className="header-item first-item">NOMBRE<Down className="arrow" color='brand' /></Text>
+                <Text className="header-item">APELLIDO<Down className="arrow" color='brand' /></Text>
+                <Text className="header-item">EMAIL<Down className="arrow" color='brand' /></Text>
+                <Text className="header-item">DOCUMENTO<Down className="arrow" color='brand' /></Text>
+                <Text className="header-item">FECHA DE NACIMIENTO<Down className="arrow" color='brand' /></Text>
+                <Text className="header-item">TELÉFONO<Down className="arrow" color='brand' /></Text>
+            </Header>
+            <InfiniteScroll items={data} >
+                {item => (
+                    <Box
+                        className="customer-box"
+                        border={{ side: 'bottom' }}
+                        align="center"
+                    >
+                        <Text className="row-item">{item.firstName}</Text>
+                        <Text className="row-item">{item.lastName}</Text>
+                        <Text className="row-item">{item.email}</Text>
+                        <Text className="row-item">{item.ci}</Text>
+                        <Text className="row-item">{item.phone}</Text>
+                        <Text className="row-item">{item.phone}</Text>
+                    </Box>
+                )}
+            </InfiniteScroll>
         </div>
     )
 }

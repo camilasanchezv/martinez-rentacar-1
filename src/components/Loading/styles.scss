@@ -1,0 +1,17 @@
+.loading-container {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+
+    background-color: #1f05381e;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .spinner {
+        position: absolute;
+        right: 42px;
+        top: 42px;
+    }
+}
