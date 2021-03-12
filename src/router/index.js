@@ -3,21 +3,25 @@ import {
     Switch,
     Route,
 } from "react-router-dom";
+import { CustomersList } from "../components";
 import { Car, Customer } from "../screens";
 
 export default function MainRouter() {
     return (
-            <Switch>
-                <Route path="/customer">
-                    <Customer />
-                </Route>
-                <Route path="/car">
-                    <Car />
-                </Route>
-                <Route path="/">
-                    <Home />
-                </Route>
-            </Switch>
+        <Switch>
+            <Route path="/customer">
+                <Customer />
+            </Route>
+            <Route path="/customer-list">
+                <CustomersList />
+            </Route>
+            <Route path="/car">
+                <Car />
+            </Route>
+            <Route path="/">
+                <Home />
+            </Route>
+        </Switch>
     );
 }
 

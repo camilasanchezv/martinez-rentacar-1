@@ -4,6 +4,7 @@ import './styles.scss';
 import { Down } from 'grommet-icons'
 import { AppContext } from '../../context';
 import { useWindowDimensions } from '../../utils/CustomHooks';
+import Container from '../Container';
 
 export default function CustomersList() {
     const context = useContext(AppContext)
@@ -37,15 +38,15 @@ export default function CustomersList() {
 
 
     return (
-        <div className="container">
+        <Container className="container">
             <div className="customers-list">
                 <Header className="header">
-                    {width > 664 ? <Text className="header-item first-item" >NOMBRE<Down className="arrow" color='brand' onClick={() => sortByName()} /></Text> : null}
-                    {width > 493 ? <Text className="header-item" >APELLIDO<Down className="arrow" color='brand' /></Text> : null}
-                    {width > 836 ? <Text className="header-item">EMAIL<Down className="arrow" color='brand' /></Text> : null}
-                    <Text className="header-item">DOCUMENTO<Down className="arrow" color='brand' /></Text>
-                    {width > 1008 ? <Text className="header-item">NACIMIENTO<Down className="arrow" color='brand' /></Text> : null}
-                    {width > 1180 ? <Text className="header-item">TELÉFONO<Down className="arrow" color='brand' /></Text> : null}
+                    {width > 664 && <Text className="header-item first-item">NOMBRE<Down className="arrow" color='brand' onClick={() => sortByName()} /></Text>}
+                    {width > 493 && <Box border={{ side: 'left', color: 'accent', size: 'small' }}><Text className="header-item" >APELLIDO<Down className="arrow" color='brand' /></Text></Box>}
+                    {width > 836 && <Box border={{ side: 'left', color: 'accent', size: 'small' }}><Text className="header-item">EMAIL<Down className="arrow" color='brand' /></Text></Box>}
+                    <Box border={{ side: 'left', color: 'accent', size: 'small' }}><Text className="header-item">DOCUMENTO<Down className="arrow" color='brand' /></Text></Box>
+                    {width > 1008 && <Box border={{ side: 'left', color: 'accent', size: 'small' }}><Text className="header-item">NACIMIENTO<Down className="arrow" color='brand' /></Text></Box>}
+                    {width > 1180 && <Box border={{ side: 'left', color: 'accent', size: 'small' }}><Text className="header-item">TELÉFONO<Down className="arrow" color='brand' /></Text></Box>}
                 </Header>
                 <Box className="scroll-container" height="medium" overflow="auto">
                     <InfiniteScroll state={data} items={data}>
@@ -66,6 +67,6 @@ export default function CustomersList() {
                     </InfiniteScroll>
                 </Box>
             </div>
-        </div >
+        </Container>
     )
 }
