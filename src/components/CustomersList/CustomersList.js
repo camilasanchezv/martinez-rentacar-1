@@ -1,5 +1,5 @@
 import { InfiniteScroll, Text, Box, Header } from 'grommet';
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import './styles.scss';
 import { Down } from 'grommet-icons'
 import { AppContext } from '../../context';
@@ -7,28 +7,48 @@ import { useWindowDimensions } from '../../utils/CustomHooks';
 
 export default function CustomersList() {
     const context = useContext(AppContext)
+    const [data, setData] = useState([])
+
+
+    useEffect(() => {
+        setData(context.customers);
+    }, [context.customers])
 
     useEffect(() => {
         context.getCustomersList();
+        setData(context.customers);
     }, [])
 
-    const data = context.customers;
+
 
     const { height, width } = useWindowDimensions(); // for responsive
+
+
+
+    // sorting data
+
+    function sortByName() { //known issue: list renders once. Need to render again for showing sorted list
+        if (context.customers) {
+            const aux = context.customers.map((a) => a)
+            setData(aux.sort((a, b) => (a.firstName.toLowerCase() > b.firstName.toLowerCase()) ? 1 : -1));
+            console.log(data)
+        }
+    }
+
 
     return (
         <div className="container">
             <div className="customers-list">
                 <Header className="header">
-                    {width > 664 ? <Text className="header-item first-item">NOMBRE<Down className="arrow" color='brand' /></Text> : null}
-                    {width > 493 ? <Text className="header-item">APELLIDO<Down className="arrow" color='brand' /></Text> : null}
+                    {width > 664 ? <Text className="header-item first-item" >NOMBRE<Down className="arrow" color='brand' onClick={() => sortByName()} /></Text> : null}
+                    {width > 493 ? <Text className="header-item" >APELLIDO<Down className="arrow" color='brand' /></Text> : null}
                     {width > 836 ? <Text className="header-item">EMAIL<Down className="arrow" color='brand' /></Text> : null}
                     <Text className="header-item">DOCUMENTO<Down className="arrow" color='brand' /></Text>
                     {width > 1008 ? <Text className="header-item">NACIMIENTO<Down className="arrow" color='brand' /></Text> : null}
                     {width > 1180 ? <Text className="header-item">TELÉFONO<Down className="arrow" color='brand' /></Text> : null}
                 </Header>
                 <Box className="scroll-container" height="medium" overflow="auto">
-                    <InfiniteScroll items={data}>
+                    <InfiniteScroll state={data} items={data}>
                         {(item) => (
                             <Box
                                 className="customer-box"

@@ -27,6 +27,7 @@ const AppContextContainer = ({ children }) => {
 
     const context = {
         customers,
+        setCustomers,
         getCustomersList,
         loading,
         newCustomer
