@@ -4,6 +4,8 @@ import CarForm from './CarForm';
 import Sidebar from './Sidebar';
 import Tooltip from './Tooltip';
 import Loading from './Loading';
+import Header from './Header';
+import Container from './Container';
 
 export {
     Title,
@@ -11,5 +13,7 @@ export {
     CarForm,
     Sidebar,
     Tooltip,
-    Loading
+    Loading,
+    Header,
+    Container
 }

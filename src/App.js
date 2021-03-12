@@ -7,12 +7,38 @@ import SidebarNavigation from './components/Sidebar/Sidebar';
 import { Router } from "react-router-dom";
 import { createBrowserHistory } from "history";
 import AppContextContainer from './context';
-import { Loading } from './components';
+import { Header, Loading } from './components';
 
 const history = createBrowserHistory();
 
 const theme = {
   global: {
+    colors: {
+      // Overriding existing grommet colors
+      brand: "#242f40",
+      "accent-1": "#cca43b",
+      "accent-2": "#7FFFB0",
+      "accent-3": "#8FFFB0",
+      "accent-4": "#9FFFB0",
+      "neutral-1": "#10873D",
+      "neutral-2": "#20873D",
+      "neutral-3": "#30873D",
+      "neutral-4": "#40873D",
+      focus: "#000",
+      // Setting new colors
+      blue: "#00C8FF",
+      green: "#17EBA0",
+      teal: "#82FFF2",
+      purple: "#F740FF",
+      red: "#FC6161",
+      orange: "#FFBC44",
+      yellow: "#FFEB59",
+      // you can also point to existing grommet colors
+      brightGreen: "accent-1",
+      deepGreen: "neutral-2",
+      background: "#e5e5e5",
+      white: '#fff'
+    },
     font: {
       family: 'Roboto',
       size: '14px',
@@ -24,20 +50,22 @@ const theme = {
 
 function App() {
   return (
-    <AppContextContainer>
-            <Loading /> 
-      <Router history={history}>
+    <Router history={history}>
+      <AppContextContainer>
+        <Loading />
+
         <Grommet theme={theme}>
           <div className="app-container">
             <SidebarNavigation />
             <div className="content-container">
+              <Header />
               <MainRouter />
             </div>
           </div>
         </Grommet>
-      </Router>
+      </AppContextContainer>
+    </Router>
 
-    </AppContextContainer>
   )
 }
 

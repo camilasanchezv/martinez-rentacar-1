@@ -1,5 +1,5 @@
-.sidebar {
-    margin: 12px 0;
+.sidebar-container :is(.sidebar) {
+    border-radius: 0;
 
     .tip {
         background-color: red;
