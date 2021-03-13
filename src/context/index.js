@@ -5,12 +5,16 @@ import { useHistory } from 'react-router-dom'
 export const AppContext = createContext(null);
 
 const PageTitles = {
-    customer: "Nuevo customer",
-    car: "Nuevo auto"
+    customer: "Nuevo Cliente",
+    car: "Nuevo Auto",
+    customerslist: "Lista de Clientes"
 }
 
 const getTitleByPathname = path => {
     switch (true) {
+        case path.startsWith("/customerslist"):
+            return PageTitles['customerslist'];
+
         case path.startsWith("/customer"):
             return PageTitles['customer'];
 
