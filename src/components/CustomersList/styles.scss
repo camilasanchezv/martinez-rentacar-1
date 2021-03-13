@@ -1,11 +1,11 @@
 .container {
-    height: 100vh;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    
 
-    .customers-list{    
-        width: calc(100vw - 150px);
+    .customers-list{
         height: auto;
 
         display: flex;
@@ -15,34 +15,31 @@
 
         // HEADER
         .header {
-            background-color: #f8f8f8;
             display: flex;
             flex-direction: row;
             flex-wrap: nowrap;
             justify-content: flex-start;
             height: 60px;
+            padding: 0;
+            
+            div {
+                display:none;
+            }
 
-            .header-item {
+            .box {
+                display: block;
                 width: calc(100%/6);
                 min-width: 150px;
-
                 font-size: 18px;
-    
+        
                 padding: 0px 10px;
-    
-                //border-left: solid #cca43b 2px;
-    
+
                 .arrow {
                     height: 16px;
                     width: auto;
                     padding-left: 8px;
                 }
             }
-            
-    
-            // div {
-            //     display:none
-            // }
     
             .first-item {
                 border-style: none;
@@ -54,8 +51,6 @@
         .scroll-container{
             overflow: auto;
             height: calc(100vh - 150px);
-
-            overflow: hidden; //for responsive
 
             .customer-box{
                 display: flex;
@@ -74,24 +69,24 @@
         }
 
             // RESPONSIVE 
-            @media (max-width: 1180px) {
-                .header .header-item {
+            @media (max-width: 1308px) {
+                .header .box {
                     width: calc(100%/5);
                 }
                 .scroll-container .row-item {
                     width: calc(100%/5);
                 }
             }
-            @media (max-width: 1008px) {
-                .header .header-item {
+            @media (max-width: 1138px) {
+                .header .box {
                     width: calc(100%/4);
                 }
                 .scroll-container .row-item {
                     width: calc(100%/4);
                 }
             }
-            @media (max-width: 836px) {
-                .header .header-item {
+            @media (max-width: 968px) {
+                .header .box {
                     width: calc(100%/3);
                 }
                 .scroll-container .row-item {
@@ -99,7 +94,7 @@
                 }
             }
             @media (max-width: 664px) {
-                .header .header-item {
+                .header .box {
                     width: 50%;
                 }
                 .scroll-container .row-item {
@@ -107,7 +102,7 @@
                 }
             }
             @media (max-width: 493px) {
-                .header .header-item {
+                .header .box {
                     width: 100%;
                     min-width: none;
                 }

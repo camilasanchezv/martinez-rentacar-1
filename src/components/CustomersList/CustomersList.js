@@ -38,15 +38,15 @@ export default function CustomersList() {
 
 
     return (
-        <Container className="container">
+        <div className="container" >
             <div className="customers-list">
-                <Header className="header">
-                    {width > 664 && <Text className="header-item first-item">NOMBRE<Down className="arrow" color='brand' onClick={() => sortByName()} /></Text>}
-                    {width > 493 && <Box border={{ side: 'left', color: 'accent', size: 'small' }}><Text className="header-item" >APELLIDO<Down className="arrow" color='brand' /></Text></Box>}
-                    {width > 836 && <Box border={{ side: 'left', color: 'accent', size: 'small' }}><Text className="header-item">EMAIL<Down className="arrow" color='brand' /></Text></Box>}
-                    <Box border={{ side: 'left', color: 'accent', size: 'small' }}><Text className="header-item">DOCUMENTO<Down className="arrow" color='brand' /></Text></Box>
-                    {width > 1008 && <Box border={{ side: 'left', color: 'accent', size: 'small' }}><Text className="header-item">NACIMIENTO<Down className="arrow" color='brand' /></Text></Box>}
-                    {width > 1180 && <Box border={{ side: 'left', color: 'accent', size: 'small' }}><Text className="header-item">TELÉFONO<Down className="arrow" color='brand' /></Text></Box>}
+                <Header className="header" background={{ color: 'brand' }}>
+                    {width > 664 && <Box className="box"><Text className="header-item first-item">NOMBRE<Down className="arrow" color='accent' onClick={() => sortByName()} /></Text></Box>}
+                    {width > 493 && <Box className="box" border={{ side: 'left', color: 'accent', size: 'small' }}><Text className="header-item" >APELLIDO<Down className="arrow" color='accent' /></Text></Box>}
+                    {width > 968 && <Box className="box" border={{ side: 'left', color: 'accent', size: 'small' }}><Text className="header-item">EMAIL<Down className="arrow" color='accent' /></Text></Box>}
+                    <Box className="box" border={{ side: 'left', color: 'accent', size: 'small' }}><Text className="header-item">DOCUMENTO<Down className="arrow" color='accent' /></Text></Box>
+                    {width > 1138 && <Box className="box" border={{ side: 'left', color: 'accent', size: 'small' }}><Text className="header-item">NACIMIENTO<Down className="arrow" color='accent' /></Text></Box>}
+                    {width > 1308 && <Box className="box" border={{ side: 'left', color: 'accent', size: 'small' }}><Text className="header-item">TELÉFONO<Down className="arrow" color='accent' /></Text></Box>}
                 </Header>
                 <Box className="scroll-container" height="medium" overflow="auto">
                     <InfiniteScroll state={data} items={data}>
@@ -58,15 +58,15 @@ export default function CustomersList() {
                             >
                                 {width > 664 ? <Text className="row-item">{item.firstName}</Text> : null}
                                 {width > 493 ? <Text className="row-item">{item.lastName}</Text> : null}
-                                {width > 836 ? <Text className="row-item">{item.email}</Text> : null}
+                                {width > 968 ? <Text className="row-item">{item.email}</Text> : null}
                                 <Text className="row-item">{item.ci}</Text>
-                                {width > 1008 ? <Text className="row-item">{item.birthDate}</Text> : null}
-                                {width > 1180 ? <Text className="row-item">{item.phone}</Text> : null}
+                                {width > 1138 ? <Text className="row-item">{item.birthDate}</Text> : null}
+                                {width > 1308 ? <Text className="row-item">{item.phone}</Text> : null}
                             </Box>
                         )}
                     </InfiniteScroll>
                 </Box>
             </div>
-        </Container>
+        </div >
     )
 }
