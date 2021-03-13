@@ -38,7 +38,7 @@ export default function CustomersList() {
                             <Down className="arrow" color='accent' onClick={() => sortBy('firstName')} />
                         </Text>
                     </Box>}
-                    {width > 493 && <Box className="box" border={{ side: 'left', color: 'accent', size: 'small' }}>
+                    {width > 493 && <Box className="box lastname-box" border={{ side: 'left', color: 'accent', size: 'small' }}>
                         <Text className="header-item" >
                             APELLIDO
                             <Down className="arrow" color='accent' onClick={() => sortBy('lastName')} />
@@ -50,7 +50,7 @@ export default function CustomersList() {
                             <Down className="arrow" color='accent' onClick={() => sortBy('email')} />
                         </Text>
                     </Box>}
-                    <Box className="box" border={{ side: 'left', color: 'accent', size: 'small' }}>
+                    <Box className="box ci-box" border={{ side: 'left', color: 'accent', size: 'small' }}>
                         <Text className="header-item">
                             DOCUMENTO
                             <Down className="arrow" color='accent' onClick={() => sortBy('ci')} />
