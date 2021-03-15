@@ -11,7 +11,7 @@ export default function MainRouter() {
             <Route path="/customer">
                 <Customer />
             </Route>
-            <Route path="/customerslist">
+            <Route path="/customers-list">
                 <ListOfCustomers />
             </Route>
             <Route path="/car">

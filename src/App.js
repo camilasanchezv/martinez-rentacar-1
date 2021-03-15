@@ -4,7 +4,6 @@ import 'typeface-roboto'
 import MainRouter from './router';
 import SidebarNavigation from './components/Sidebar/Sidebar';
 
-import { CustomersList } from './components';
 
 import { Router } from "react-router-dom";
 import { createBrowserHistory } from "history";

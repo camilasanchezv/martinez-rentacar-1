@@ -12,7 +12,7 @@ const PageTitles = {
 
 const getTitleByPathname = path => {
     switch (true) {
-        case path.startsWith("/customerslist"):
+        case path.startsWith("/customers-list"):
             return PageTitles['customerslist'];
 
         case path.startsWith("/customer"):
