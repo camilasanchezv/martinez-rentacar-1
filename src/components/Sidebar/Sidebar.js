@@ -30,7 +30,7 @@ const SidebarNavigation = ({ history }) => {
                         <Button className="nav-button" onClick={() => handleNavigate('/customer')} icon={<UserAdd />} hoverIndicator />
                     </Tooltip>
                     <Tooltip message="Lista de clientes">
-                        <Button className="nav-button" onClick={() => handleNavigate('/customerslist')} icon={<Group />} hoverIndicator />
+                        <Button className="nav-button" onClick={() => handleNavigate('/customers-list')} icon={<Group />} hoverIndicator />
                     </Tooltip>
                     <Tooltip message="Nuevo auto">
                         <Button className="nav-button" onClick={() => handleNavigate('/car')} icon={<Car />} hoverIndicator />
