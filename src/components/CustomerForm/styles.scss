@@ -5,15 +5,16 @@
     display: flex;
     flex-direction: column;
 
+    gap: 50px;
+    padding: 50px;
+
     .customer-form {
       box-sizing: border-box;
       display: flex;
       flex-direction: row;
 
       width: 100%;
-      padding: 50px;
 
-      justify-content: center;
       gap: 100px;
   
       .form-column {
@@ -29,9 +30,6 @@
     }
 
     .button {
-      justify-content: center;
-      padding-bottom: 25px;
-
       button {
       width: 150px;
       }
@@ -51,56 +49,64 @@
   }
 
   /* Media */
-  @media (max-width: 1414px) {
+  @media (max-width: 1291px) {
     .form {
-      .customer-form{
+
+      .customer-form {
         display: flex;
-        flex-direction: row;
-
-        padding: 5vw;
-
-        gap: 4vw;
+        justify-content: center;
+        gap: 24px;
     
         .form-column {
-          display: flex;
-          flex-direction: column;
-          width: 32vw;
+          width: 50%;
         }
       }
-    }
-  }
-
-  @media (max-width: 872px) {
-    .form {
-      .customer-form{
-        display: flex;
-        flex-direction: column;
-        gap: 2vw;
-    
-        .form-column {
-          display: flex;
-          flex-direction: column;
-          width: 100%;
-
-          gap: 2vw;
-        }
-      }
-
-      .button {
-        padding: 0;
-      }
-    }
-  }
-
-  @media (max-width: 620px) {
-    .form {
+  
       .button {
         button {
-          width: 25vw;
-          font-size: 100%;
+        width: 20%;
         }
-        .reset {
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    .form {
+
+      .customer-form {
+        display: flex;
+        flex-direction: column;
+
+        .form-column {
+          width: 100%;
+        }
+      }
+  
+      .button {
+        display: flex;
+        justify-content: center;
+
+        button {
+        width: 150px;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 568px) {
+    .form {
+      padding: 6vw;
+
+      .button {
+        .reset{
           display: none;
+        }
+      }
+
+      .button {
+        button {
+        width: 50%;
+        font-size: 100%;
         }
       }
     }
@@ -108,17 +114,31 @@
 
   @media (max-width: 450px) {
     .form {
+      padding: 0;
+
+      .customer-form{
+        display: flex;
+        flex-direction: column;
+        gap: 1vw;
+
+        .form-column {
+          display: flex;
+          flex-direction: column;
+          gap: 1vw;
+        }
+      }
+
       .input{
         label{
           margin-top: 0;
           margin-bottom: 0;
         }
         .label{
-          font-size: 2vh;
+          font-size: 3vw;
         }
         .placeholder{
-          height: 1vh;
-          font-size: 2vh;
+          height: 1vw;
+          font-size: 3vw;
         }
       }
     }
