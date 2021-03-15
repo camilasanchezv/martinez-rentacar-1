@@ -6,7 +6,6 @@ import Tooltip from './Tooltip';
 import Loading from './Loading';
 import Header from './Header';
 import Container from './Container';
-
 import CustomersList from './CustomersList'
 
 export {
