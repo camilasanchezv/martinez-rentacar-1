@@ -1,12 +1,12 @@
 import React from 'react'
-import { Sidebar, Avatar, Button, Nav, Tip } from 'grommet';
-import { Icon } from 'react-icons-kit'
 
+import { Tooltip } from '..';
+import { withRouter } from "react-router-dom";
+
+import { Sidebar, Avatar, Button, Nav } from 'grommet';
 import { Group, UserAdd, Car, CircleQuestion } from 'grommet-icons';
 
 import './styles.scss'
-import { Tooltip } from '..';
-import { withRouter } from "react-router-dom";
 
 const SidebarNavigation = ({ history }) => {
     const handleNavigate = path => history.push(path)

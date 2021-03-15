@@ -1,15 +1,17 @@
-import { InfiniteScroll, Text, Box, Header } from 'grommet';
 import React, { useContext, useEffect, useState } from 'react';
-import './styles.scss';
-import { Down } from 'grommet-icons'
+
 import { AppContext } from '../../context';
 import { useWindowDimensions } from '../../utils/CustomHooks';
-import Container from '../Container';
+
+import { InfiniteScroll, Text, Box, Header } from 'grommet';
+import { Down } from 'grommet-icons'
+
+import './styles.scss';
 
 export default function CustomersList() {
     const context = useContext(AppContext)
     const [data, setData] = useState([])
-
+    const { height, width } = useWindowDimensions();
 
     useEffect(() => {
         setData(context.customers);
@@ -20,10 +22,7 @@ export default function CustomersList() {
         setData(context.customers);
     }, [])
 
-    const { height, width } = useWindowDimensions();
-
     // sorting data
-
     const sortTexts = (a, b, prop) => a[prop].toLowerCase() > b[prop].toLowerCase() ? 1 : -1;
     const sortCustomers = sorting => context.customers.map(a => a).sort(sorting);
     const sortBy = prop => setData(sortCustomers((a, b) => sortTexts(a, b, prop)));
@@ -77,12 +76,12 @@ export default function CustomersList() {
                                 flex={false}
                                 border={{ side: 'bottom' }}
                             >
-                                {width > 664 ? <Text className="row-item">{item.firstName}</Text> : null}
-                                {width > 493 ? <Text className="row-item">{item.lastName}</Text> : null}
-                                {width > 968 ? <Text className="row-item">{item.email}</Text> : null}
+                                {width > 664 && <Text className="row-item">{item.firstName}</Text>}
+                                {width > 493 && <Text className="row-item">{item.lastName}</Text>}
+                                {width > 968 && <Text className="row-item">{item.email}</Text>}
                                 <Text className="row-item">{item.ci}</Text>
-                                {width > 1138 ? <Text className="row-item">{item.birthDate}</Text> : null}
-                                {width > 1308 ? <Text className="row-item">{item.phone}</Text> : null}
+                                {width > 1138 && <Text className="row-item">{item.birthDate}</Text>}
+                                {width > 1308 && <Text className="row-item">{item.phone}</Text>}
                             </Box>
                         )}
                     </InfiniteScroll>
