@@ -8,7 +8,7 @@ export default function Customer() {
     return (
         <Container>
             <div className="customer-container">
-                <Heading margin="0" color="brand">Agrega un nuevo cliente</Heading>
+                <Heading className="title" margin="0" color="brand">Agrega un nuevo cliente</Heading>
                 <CustomerForm />
             </div>
         </Container>

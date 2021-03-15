@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { Form, FormField, TextInput, Box, Button, MaskedInput } from 'grommet';
+import { Form, FormField, TextInput, Box, Button, MaskedInput, Text } from 'grommet';
 import { AppContext } from '../../context';
 import './styles.scss';
 
@@ -55,36 +55,37 @@ export default function CustomerForm() {
             >
                 <div className="customer-form">
                     <div className="form-column">
-                        <FormField className="input" label="Nombre">
-                            <TextInput placeholder="Agustín" name="firstName" required />
+                        <FormField className="input" label={<Text className="label" >Nombre</Text>}>
+                            <TextInput className="placeholder" placeholder="Agustín" name="firstName" required />
                         </FormField>
-                        <FormField className="input" label="Apellido">
-                            <TextInput placeholder="Fernández" name="lastName" required />
+                        <FormField className="input" label={<Text className="label" >Apellido</Text>}>
+                            <TextInput className="placeholder" placeholder="Fernández" name="lastName" required />
                         </FormField>
-                        <FormField className="input" label="Cédula de Identidad">
-                            <TextInput type="number" name="ci" placeholder="12345678" required />
+                        <FormField className="input" label={<Text className="label" >Cédula de Identidad</Text>}>
+                            <TextInput className="placeholder" type="number" name="ci" placeholder="12345678" required />
                         </FormField>
                     </div>
 
                     <div className="form-column">
-                        <FormField className="input" label="Fecha de Nacimiento">
-                            <MaskedInput name="birthDate"
+                        <FormField className="input" label={<Text className="label" >Fecha de Nacimiento</Text>}>
+                            <MaskedInput className="placeholder"
+                                name="birthDate"
                                 mask={birthDateMask}
                                 required
                             />
                         </FormField>
-                        <FormField className="input" type="email" label="Email">
-                            <TextInput name="email" placeholder="agustinfernandez@ejemplo.com" required />
+                        <FormField className="input" type="email" label={<Text className="label" >Email</Text>}>
+                            <TextInput className="placeholder" name="email" placeholder="agustinfernandez@ejemplo.com" required />
                         </FormField>
-                        <FormField className="input" label="Teléfono">
-                            <TextInput type="number" name="phone" placeholder="26045555" required />
+                        <FormField className="input" label={<Text className="label" >Teléfono</Text>}>
+                            <TextInput className="placeholder" type="number" name="phone" placeholder="26045555" required />
                         </FormField>
                     </div>
                 </div>
 
                 <Box className="button" direction="row" gap="medium">
                     <Button type="submit" label="Enviar" primary />
-                    <Button type="reset" label="Borrar" />
+                    <Button className="reset" type="reset" label="Borrar" />
                 </Box>
             </Form>
         </div>

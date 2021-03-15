@@ -5,4 +5,10 @@
 
     justify-content: center;
     align-items: center;
+
+    @media (max-width: 624px) {
+        .title {
+            font-size: 5vw;
+        }
+    }
 }
