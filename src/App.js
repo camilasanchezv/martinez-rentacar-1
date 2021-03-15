@@ -4,6 +4,7 @@ import 'typeface-roboto'
 import MainRouter from './router';
 import SidebarNavigation from './components/Sidebar/Sidebar';
 
+
 import { Router } from "react-router-dom";
 import { createBrowserHistory } from "history";
 import AppContextContainer from './context';
@@ -16,14 +17,7 @@ const theme = {
     colors: {
       // Overriding existing grommet colors
       brand: "#242f40",
-      "accent-1": "#cca43b",
-      "accent-2": "#7FFFB0",
-      "accent-3": "#8FFFB0",
-      "accent-4": "#9FFFB0",
-      "neutral-1": "#10873D",
-      "neutral-2": "#20873D",
-      "neutral-3": "#30873D",
-      "neutral-4": "#40873D",
+      accent: "#cca43b",
       focus: "#000",
       // Setting new colors
       blue: "#00C8FF",

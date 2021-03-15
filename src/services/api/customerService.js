@@ -2,7 +2,7 @@ import { unauthAxiosCall } from '../axiosCall';
 
 export const listCustomers = async () => {
     return unauthAxiosCall('customer/list', {
-        method: "GET"
+        method: "GET",
     })
 }
 

@@ -1,0 +1,147 @@
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  .customers-list {
+    height: auto;
+
+    display: flex;
+    flex-direction: column;
+
+    overflow-y: auto;
+
+    // HEADER
+    .header {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: flex-start;
+      height: 60px;
+      padding: 0;
+
+      div {
+        display: none;
+      }
+
+      .box {
+        display: block;
+        width: calc(100% / 6);
+        min-width: 150px;
+        font-size: 18px;
+
+        padding: 0 0 0 20px;
+
+        .arrow {
+          height: 16px;
+          width: auto;
+          padding-left: 8px;
+        }
+      }
+
+      .first-item {
+        border-style: none;
+      }
+    }
+
+    // CUSTOMER SCROLL
+
+    .scroll-container {
+      overflow: auto;
+      height: calc(100vh - 150px);
+
+      .customer-box {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+      }
+
+      .row-item {
+        box-sizing: border-box;
+        width: calc(100% / 6);
+        min-width: 150px;
+        padding: 10px;
+        padding-left: 20px;
+
+        overflow: auto;
+      }
+    }
+
+    // RESPONSIVE
+    @media (max-width: 1308px) {
+      .header .box {
+        width: calc(100% / 5);
+      }
+      .scroll-container .row-item {
+        width: calc(100% / 5);
+      }
+    }
+    @media (max-width: 1138px) {
+      .header .box {
+        width: calc(100% / 4);
+      }
+      .scroll-container .row-item {
+        width: calc(100% / 4);
+      }
+    }
+    @media (max-width: 968px) {
+      .header .box {
+        width: calc(100% / 3);
+      }
+      .scroll-container .row-item {
+        width: calc(100% / 3);
+      }
+    }
+    @media (max-width: 664px) {
+      .header {
+        .box {
+          width: 50%;
+          min-width: none;
+        }
+        .lastname-box {
+          border: none;
+        }
+      }
+      .scroll-container .row-item {
+        width: 50%;
+      }
+    }
+    @media (max-width: 493px) {
+      .header {
+        .box {
+          width: 100%;
+          min-width: none;
+        }
+        .ci-box {
+          border: none;
+        }
+      }
+      .scroll-container .row-item {
+        width: 100%;
+        min-width: none;
+      }
+    }
+  }
+
+  /* width */
+  ::-webkit-scrollbar {
+    height: 5px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #dfdfdf;
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #999999;
+  }
+}

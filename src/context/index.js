@@ -5,12 +5,16 @@ import { useHistory } from 'react-router-dom'
 export const AppContext = createContext(null);
 
 const PageTitles = {
-    customer: "Nuevo customer",
-    car: "Nuevo auto"
+    customer: "Nuevo Cliente",
+    car: "Nuevo Auto",
+    customerslist: "Lista de Clientes"
 }
 
 const getTitleByPathname = path => {
     switch (true) {
+        case path.startsWith("/customers-list"):
+            return PageTitles['customerslist'];
+
         case path.startsWith("/customer"):
             return PageTitles['customer'];
 
@@ -56,6 +60,7 @@ const AppContextContainer = ({ children }) => {
 
     const context = {
         customers,
+        setCustomers,
         getCustomersList,
         loading,
         newCustomer,

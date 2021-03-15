@@ -15,9 +15,9 @@ const axiosCall = async (path, { query, ...requestOptions }) => {
         header: requestOptions.header
     })
 
-    if ( response.status >= 200 && response.status < 400 ) return response
+    if (response.status >= 200 && response.status < 400) return response
 
-    if ( response.status < 500 ) {
+    if (response.status < 500) {
         return {
             error: "Error"
         }
