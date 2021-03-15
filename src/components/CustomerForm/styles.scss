@@ -92,7 +92,21 @@
     }
   }
 
-  @media (max-width: 624px) {
+  @media (max-width: 620px) {
+    .form {
+      .button {
+        button {
+          width: 25vw;
+          font-size: 100%;
+        }
+        .reset {
+          display: none;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 450px) {
     .form {
       .input{
         label{
@@ -107,17 +121,6 @@
           font-size: 2vh;
         }
       }
-
-      .button {
-        button {
-          width: 25vw;
-          font-size: 100%;
-        }
-        .reset {
-          display: none;
-        }
-      }
     }
   }
-
 }
