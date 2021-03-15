@@ -26,7 +26,7 @@ const birthDateMask = [
 const defaultValue = {
     firstName: '',
     lastName: '',
-    id: '',
+    ci: '',
     email: '',
     birthDate: '',
     phone: '',
@@ -40,7 +40,7 @@ export default function CustomerForm() {
 
     const submitHandler = (e) => {
         e.preventDefault();
-        context.newCustomer(value.firstName, value.lastName, value.id, value.phone, value.email, value.birthDate)
+        context.newCustomer(value.firstName, value.lastName, value.ci, value.phone, value.email, value.birthDate)
         setValue(defaultValue)
     }
 
@@ -60,7 +60,7 @@ export default function CustomerForm() {
                         <TextInput placeholder="Fernández" name="lastName" />
                     </FormField>
                     <FormField className="input" label="Cédula de Identidad">
-                        <TextInput type="number" name="id" placeholder="12345678" />
+                        <TextInput type="number" name="ci" placeholder="12345678" />
                     </FormField>
                 </div>
                 <div className="form-column">
