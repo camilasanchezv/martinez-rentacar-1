@@ -1,35 +1,46 @@
 .customer-form-container{
-  /* Form Display */
-  .customer-form{
-    text-align: start;
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: space-between;
-  }
+  width: 100%;
 
-  .form-column{
-    width: 350px;
+  .form {
     display: flex;
     flex-direction: column;
+
+    .customer-form {
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: row;
+
+      width: 100%;
+      padding: 50px;
+
+      justify-content: center;
+      gap: 50px;
+  
+      .form-column {
+        display: flex;
+        flex-direction: column;
+        width: 400px;
+        gap: 24px;
+      }
+
+      .input {
+        font-size: 16px;
+      }
+    }
+
+    .button {
+      justify-content: center;
+      padding-bottom: 25px;
+
+      button {
+      width: 150px;
+      }
+    }
   }
 
-  /* Form */
-  .button {
-    width: 100%;
-    margin-top: 38px;
-    justify-content: center;
-  }
 
-  .input{
-    font-size: 18px;
-    padding-bottom: 8px;
-  }
+  
 
-  .input input{
-    padding: 8px 12px;
-  }
 
   /* Hiding arrows in input type: number */
   /* Chrome, Safari, Edge, Opera */
@@ -48,44 +59,6 @@
     .customer-form{
       display: flex;
       flex-direction: column;
-    }
-  }
-  @media (max-width: 680px) {
-    .form-column{
-      width: 62vw;
-    }
-
-    /* Form */
-    .button {
-      margin-top: 10vw;
-    }
-
-    .input{
-      font-size: 3.2vw;
-      padding-bottom: 1vw;
-    }
-
-    .input input{
-      padding: 1vw 2vw;
-    }
-  }
-  @media (max-width: 375px) {
-    .form-column{
-      width: 268px;
-    }
-
-    /* Form */
-    .button {
-      margin-top: 8px;
-    }
-
-    .input{
-      font-size: 12px;
-      padding-bottom: 8px;
-    }
-
-    .input input{
-      padding: 4px 8px;
     }
   }
 }

@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
-import './styles.scss';
 import { Form, FormField, TextInput, Box, Button, MaskedInput } from 'grommet';
 import { AppContext } from '../../context';
+import './styles.scss';
 
 const birthDateMask = [
     {
@@ -47,38 +47,44 @@ export default function CustomerForm() {
     return (
         <div className="customer-form-container">
             <Form
-                className="customer-form"
+                className="form"
                 value={value}
                 onChange={nextValue => setValue(nextValue)}
                 onSubmit={(e) => submitHandler(e)}
+                onReset={() => setValue(defaultValue)}
             >
-                <div className="form-column">
-                    <FormField className="input" label="Nombre">
-                        <TextInput placeholder="Agustín" name="firstName" />
-                    </FormField>
-                    <FormField className="input" label="Apellido">
-                        <TextInput placeholder="Fernández" name="lastName" />
-                    </FormField>
-                    <FormField className="input" label="Cédula de Identidad">
-                        <TextInput type="number" name="ci" placeholder="12345678" />
-                    </FormField>
-                </div>
-                <div className="form-column">
-                    <FormField className="input" label="Fecha de Nacimiento">
-                        <MaskedInput name="birthDate"
-                            mask={birthDateMask}
-                        />
-                    </FormField>
-                    <FormField className="input" type="email" label="Email">
-                        <TextInput name="email" placeholder="agustinfernandez@ejemplo.com" />
-                    </FormField>
-                    <FormField className="input" label="Teléfono">
-                        <TextInput type="number" name="phone" placeholder="26045555" />
-                    </FormField>
+                <div className="customer-form">
+                    <div className="form-column">
+                        <FormField className="input" label="Nombre">
+                            <TextInput placeholder="Agustín" name="firstName" required />
+                        </FormField>
+                        <FormField className="input" label="Apellido">
+                            <TextInput placeholder="Fernández" name="lastName" required />
+                        </FormField>
+                        <FormField className="input" label="Cédula de Identidad">
+                            <TextInput type="number" name="ci" placeholder="12345678" required />
+                        </FormField>
+                    </div>
+
+                    <div className="form-column">
+                        <FormField className="input" label="Fecha de Nacimiento">
+                            <MaskedInput name="birthDate"
+                                mask={birthDateMask}
+                                required
+                            />
+                        </FormField>
+                        <FormField className="input" type="email" label="Email">
+                            <TextInput name="email" placeholder="agustinfernandez@ejemplo.com" required />
+                        </FormField>
+                        <FormField className="input" label="Teléfono">
+                            <TextInput type="number" name="phone" placeholder="26045555" required />
+                        </FormField>
+                    </div>
                 </div>
 
                 <Box className="button" direction="row" gap="medium">
                     <Button type="submit" label="Enviar" primary />
+                    <Button type="reset" label="Borrar" />
                 </Box>
             </Form>
         </div>
