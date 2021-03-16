@@ -52,9 +52,9 @@ const AppContextContainer = ({ children }) => {
         setLoading(false)
     }
 
-    const newCustomer = async (firstName, lastName, id, phone, email, birthDate) => {
+    const newCustomer = async (firstName, lastName, ci, phone, email, birthDate) => {
         setLoading(true);
-        await createCustomer(firstName, lastName, id, phone, email, birthDate);
+        await createCustomer(firstName, lastName, ci, phone, email, birthDate);
         setLoading(false)
     }
 
