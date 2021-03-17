@@ -43,44 +43,46 @@ export default function CarForm() {
     return (
         <div className="car-form-container">
             <Form
-                className="car-form"
+                className="form"
                 value={value}
                 onChange={nextValue => setValue(nextValue)}
                 onSubmit={(e) => submitHandler(e)}
                 onReset={() => setValue(defaultValue)}
             >
-                <div className="form-column picture-form">
-                    <Box className="input" direction="row" gap="small">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Circle-icons-car.svg/1200px-Circle-icons-car.svg.png" className="image" />
-                    </Box>
-                    <FileInput className="file-input" type="file" onChange={previewFile} />
-
-
-                    <Box className="button" direction="row" gap="medium">
-                        <Button type="submit" label="Enviar" primary />
-                        <Button className="reset" type="reset" label="Borrar" />
-                    </Box>
+                <div className="car-form">
+                    <div className="form-column">
+                        <div className="picture-form">
+                            <Box className="input" direction="row" gap="small">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Circle-icons-car.svg/1200px-Circle-icons-car.svg.png" className="image" />
+                            </Box>
+                            <input className="file-input" type="file" onChange={previewFile} />
+                        </div>
+                        <FormField className="input" label="Marca">
+                            <TextInput placeholder="Volkswagen" name="brand" />
+                        </FormField>
+                    </div>
+                    <div className="form-column">
+                        <FormField className="input" label="Modelo">
+                            <TextInput placeholder="up!" name="model" />
+                        </FormField>
+                        <FormField className="input" label="Número de Motor">
+                            <TextInput type="number" placeholder="12345" name="engineNumber" />
+                        </FormField>
+                        <FormField className="input" label="Matrícula">
+                            <TextInput placeholder="ABC1234" name="plate" />
+                        </FormField>
+                        <FormField className="input" label="Kilómetros de Entrada">
+                            <TextInput type="number" placeholder="0" name="entryKM" />
+                        </FormField>
+                        <FormField className="input" label="Valor de Compra (USD)">
+                            <TextInput type="number" placeholder="14890" name="buyValue" />
+                        </FormField>
+                    </div>
                 </div>
-                <div className="form-column">
-                    <FormField className="input" label="Marca">
-                        <TextInput placeholder="Volkswagen" name="brand" />
-                    </FormField>
-                    <FormField className="input" label="Modelo">
-                        <TextInput placeholder="up!" name="model" />
-                    </FormField>
-                    <FormField className="input" label="Número de Motor">
-                        <TextInput type="number" placeholder="12345" name="engineNumber" />
-                    </FormField>
-                    <FormField className="input" label="Matrícula">
-                        <TextInput placeholder="ABC1234" name="plate" />
-                    </FormField>
-                    <FormField className="input" label="Kilómetros de Entrada">
-                        <TextInput type="number" placeholder="0" name="entryKM" />
-                    </FormField>
-                    <FormField className="input" label="Valor de Compra (USD)">
-                        <TextInput type="number" placeholder="14890" name="buyValue" />
-                    </FormField>
-                </div>
+                <Box className="button" direction="row" gap="medium">
+                    <Button type="submit" label="Enviar" primary />
+                    <Button className="reset" type="reset" label="Borrar" />
+                </Box>
             </Form>
         </div>
     )
