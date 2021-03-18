@@ -1,5 +1,6 @@
 .car-form-container{
   width: 100%;
+  overflow: auto;
 
   .form {
     display: flex;
@@ -23,16 +24,20 @@
         gap: 24px;
       }
 
+      .last-form {
+        width: auto;
+      }
+
       .picture-form{
-        height: 432px;
+        height: 100%;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
         align-items: center;
 
         .image{
-          width: 350px;
-          height: 350px;
+          width: 225px;
+          height: 225px;
           border-radius: 50%;
           object-fit: cover;
           
@@ -41,6 +46,7 @@
         .file-input{
           margin: 16px 0;
           align-items: center;
+          margin-bottom: 12px;
         }
       }
 
@@ -69,10 +75,28 @@
   }
 
   /* Media */
-  @media (max-width: 1291px) {
+
+  @media (max-width: 1618px) {
     .form {
 
-      .customer-form {
+      .car-form {
+        gap: 50px;
+
+        .form-column {
+          width: 325px;
+        }
+      }
+
+      .button {
+        width: 30%;
+      }
+    }
+  }
+
+  @media (max-width: 1370px) {
+    .form {
+
+      .car-form {
         display: flex;
         justify-content: center;
         gap: 24px;
@@ -81,52 +105,40 @@
           width: 50%;
         }
       }
-  
-      .button {
-        button {
-        width: 20%;
-        }
-      }
     }
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 983px) {
     .form {
 
-      .customer-form {
+      .car-form {
         display: flex;
         flex-direction: column;
 
         .form-column {
           width: 100%;
         }
+
+        .picture-form{
+          .image{
+            display: none;
+          }
+        }
       }
-  
+
       .button {
+        width: 100%;
         display: flex;
         justify-content: center;
 
-        button {
-        width: 150px;
-        }
-      }
-    }
-  }
-
-  @media (max-width: 568px) {
-    .form {
-      padding: 6vw;
-
-      .button {
         .reset{
           display: none;
         }
-      }
 
-      .button {
         button {
-        width: 50%;
-        font-size: 100%;
+          width: 30%;
+          min-width: 150px;
+          font-size: 125%;
         }
       }
     }
@@ -164,129 +176,3 @@
     }
   }
 }
-
-// .car-form-container{
-
-//   /* Form Display */
-//   .car-form{
-//     text-align: start;
-//     width: 100%;
-//     display: flex;
-//     flex-direction: row;
-//     justify-content: space-between;
-//   }
-
-//   .image{
-//     width: 350px;
-//     height: 350px;
-//     border-radius: 50%;
-//     object-fit: cover;
-//   }
-
-//   .picture-form{
-//     align-items: center;
-//   }
-
-//   .file-input{
-//     margin: 16px 0;
-//     align-items: center;
-//   }
-
-//   .form-column{
-//     width: 350px;
-//     display: flex;
-//     flex-direction: column;
-//   }
-
-//   /* Form */
-//   .button {
-//     margin-top: 24px;
-//     justify-content: center;
-//   }
-
-//   .input{
-//     font-size: 18px;
-//     padding-bottom: 4px;
-
-//     input{
-//       padding: 8px 12px;
-//     }
-//   }
-
-//   /* Hiding arrows in input type: number */
-//   /* Chrome, Safari, Edge, Opera */
-//   input::-webkit-outer-spin-button,
-//   input::-webkit-inner-spin-button {
-//     -webkit-appearance: none;
-//     margin: 0;
-//   }
-//   /* Firefox */
-//   input[type=number] {
-//     -moz-appearance: textfield;
-//   }
-
-//   /* Media */
-//   @media (max-width: 880px) {
-//     .car-form{
-//       display: flex;
-//       flex-direction: column;
-//     }
-    
-//   }
-//   @media (max-width: 680px) {
-//     .form-column{
-//       width: 62vw;
-//     }
-
-//     .image{
-//       width: 62vw;
-//       height: 62vw;
-//     }
-  
-//     .file-input{
-//       padding: 5vw 0;
-//     }
-
-//     /* Form */
-//     .button {
-//       margin-top: 10vw;
-//     }
-
-//     .input{
-//       font-size: 3.2vw;
-//       padding-bottom: 1vw;
-//     }
-
-//     .input input{
-//       padding: 1vw 2vw;
-//     }
-//   }
-//   @media (max-width: 375px) {
-//     .form-column{
-//       width: 268px;
-//     }
-
-//     .image{
-//       width: 268px;
-//       height: 268px;
-//     }
-  
-//     .file-input{
-//       padding: 8px 0;
-//     }
-
-//     /* Form */
-//     .button {
-//       margin-top: 8px;
-//     }
-
-//     .input{
-//       font-size: 12px;
-//       padding-bottom: 8px;
-//     }
-
-//     .input input{
-//       padding: 4px 8px;
-//     }
-//   }
-// }

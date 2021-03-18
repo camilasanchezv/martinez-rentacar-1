@@ -23,6 +23,7 @@ export default function CarForm() {
     }
 
     function previewFile() {
+        //TODO: show the default image when the image file is deleted
         const preview = document.querySelector('img');
         const file = document.querySelector('input[type=file]').files[0];
         const reader = new FileReader();
@@ -51,23 +52,17 @@ export default function CarForm() {
             >
                 <div className="car-form">
                     <div className="form-column">
-                        <div className="picture-form">
-                            <Box className="input" direction="row" gap="small">
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Circle-icons-car.svg/1200px-Circle-icons-car.svg.png" className="image" />
-                            </Box>
-                            <input className="file-input" type="file" onChange={previewFile} />
-                        </div>
                         <FormField className="input" label="Marca">
                             <TextInput placeholder="Volkswagen" name="brand" />
                         </FormField>
-                    </div>
-                    <div className="form-column">
                         <FormField className="input" label="Modelo">
                             <TextInput placeholder="up!" name="model" />
                         </FormField>
                         <FormField className="input" label="Número de Motor">
                             <TextInput type="number" placeholder="12345" name="engineNumber" />
                         </FormField>
+                    </div>
+                    <div className="form-column">
                         <FormField className="input" label="Matrícula">
                             <TextInput placeholder="ABC1234" name="plate" />
                         </FormField>
@@ -77,6 +72,16 @@ export default function CarForm() {
                         <FormField className="input" label="Valor de Compra (USD)">
                             <TextInput type="number" placeholder="14890" name="buyValue" />
                         </FormField>
+                    </div>
+                    <div className="form-column last-form">
+                        <div className="picture-form">
+                            <Box className="input" direction="row" gap="small">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Circle-icons-car.svg/1200px-Circle-icons-car.svg.png" className="image" />
+                            </Box>
+                            <div className="file-input">
+                                <FileInput className="file-input" type="file" onChange={previewFile} />
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <Box className="button" direction="row" gap="medium">
