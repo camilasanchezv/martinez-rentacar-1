@@ -18,7 +18,7 @@ export default function CarForm() {
 
     const submitHandler = (e) => {
         e.preventDefault();
-        context.newCar(value.model, value.engineNumber, value.entryKM, value.buyValue, value.plate)
+        context.newCar(value.brand, value.model, value.engineNumber, value.entryKM, value.buyValue, value.plate)
         setValue(defaultValue)
     }
 

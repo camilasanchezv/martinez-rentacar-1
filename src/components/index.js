@@ -7,6 +7,7 @@ import Loading from './Loading';
 import Header from './Header';
 import Container from './Container';
 import CustomersList from './CustomersList'
+import CarsList from './CarsList'
 
 export {
     Title,
@@ -17,5 +18,6 @@ export {
     Loading,
     Header,
     Container,
-    CustomersList
+    CustomersList,
+    CarsList
 }

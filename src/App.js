@@ -14,6 +14,9 @@ const history = createBrowserHistory();
 
 const theme = {
   global: {
+    hover: {
+      background: "#242f40",
+    },
     colors: {
       // Overriding existing grommet colors
       brand: "#242f40",
@@ -21,7 +24,7 @@ const theme = {
       focus: "#000",
       // Setting new colors
       blue: "#00C8FF",
-      green: "#17EBA0",
+      green: "#008147be",
       teal: "#82FFF2",
       purple: "#F740FF",
       red: "#FC6161",
