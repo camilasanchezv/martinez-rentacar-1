@@ -3,7 +3,7 @@ import {
     Switch,
     Route,
 } from "react-router-dom";
-import { Car, Customer, ListOfCustomers } from "../screens";
+import { Car, Customer, ListOfCustomers, ListOfCars } from "../screens";
 
 export default function MainRouter() {
     return (
@@ -16,6 +16,9 @@ export default function MainRouter() {
             </Route>
             <Route path="/car">
                 <Car />
+            </Route>
+            <Route path="/cars-list">
+                <ListOfCars />
             </Route>
             <Route path="/">
                 <Home />

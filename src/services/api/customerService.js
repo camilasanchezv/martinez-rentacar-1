@@ -15,11 +15,3 @@ export const createCustomer = async (firstName, lastName, ci, phone, email, birt
     })
 }
 
-export const createCar = async (model, engineNumber, entryKM, buyValue, plate) => {
-    return unauthAxiosCall('car/create', {
-        method: "POST",
-        body: {
-            model, engineNumber, entryKM, buyValue, plate
-        }
-    })
-}

@@ -1,5 +1,6 @@
 import React, { createContext, useEffect, useState } from 'react';
-import { listCustomers, createCustomer, createCar } from '../services/api/customerService';
+import { listCustomers, createCustomer } from '../services/api/customerService';
+import {createCar, listCars} from '../services/api/carService';
 
 import { useHistory } from 'react-router-dom'
 export const AppContext = createContext(null);
@@ -7,7 +8,8 @@ export const AppContext = createContext(null);
 const PageTitles = {
     customer: "Nuevo Cliente",
     car: "Nuevo Auto",
-    customerslist: "Lista de Clientes"
+    customerslist: "Lista de Clientes",
+    carsList: "Lista de Autos"
 }
 
 const getTitleByPathname = path => {
@@ -18,8 +20,12 @@ const getTitleByPathname = path => {
         case path.startsWith("/customer"):
             return PageTitles['customer'];
 
+        case path.startsWith("/cars-list"):
+            return PageTitles['carsList'];
+
         case path.startsWith("/car"):
             return PageTitles['car'];
+
 
         default:
             return "Martinez Rent a car"
@@ -32,7 +38,8 @@ const AppContextContainer = ({ children }) => {
 
     const history = useHistory()
     const [loading, setLoading] = useState(false)
-    const [customers, setCustomers] = useState();
+    const [customers, setCustomers] = useState([]);
+    const [cars, setCars] = useState([])
 
     useEffect(() => {
         generateNewTitle(history.location.pathname);
@@ -60,22 +67,36 @@ const AppContextContainer = ({ children }) => {
         await createCustomer(firstName, lastName, ci, phone, email, birthDate);
         setLoading(false)
     }
+    // GET CARS
+    const getCarsList = async () => {
+        setLoading(true)
+        const response = await listCars();
+        const { data } = response;
 
-    // NEW CAR
-    const newCar = async (model, engineNumber, entryKM, buyValue, plate) => {
-        setLoading(true);
-        await createCar(model, engineNumber, entryKM, buyValue, plate);
+        setCars(data);
+
         setLoading(false)
     }
 
+    // NEW CAR
+    const newCar = async (brand, model, engineNumber, entryKM, buyValue, plate) => {
+        setLoading(true);
+        await createCar(brand, model, engineNumber, entryKM, buyValue, plate);
+        setLoading(false)
+    }
+
+    
+
     const context = {
-        customers,
         setCustomers,
         getCustomersList,
         loading,
         newCustomer,
+        customers,
         newCar,
-        title
+        getCarsList,
+        cars,
+        title,
     }
 
     return <AppContext.Provider value={context}>

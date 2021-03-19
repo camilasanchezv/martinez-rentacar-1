@@ -1,0 +1,112 @@
+.CarsList {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 8px;
+  width: 100%;
+
+  .car-wrapper {
+    width: 100%;
+  }
+
+  .header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 12px 0;
+    padding-left: 8px;
+
+    .filters {
+      display: flex;
+      flex-direction: row;
+      gap: 8px;
+    }
+  }
+
+  .list-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+
+    .car-item {
+      border: 1px solid #4b5267;
+      width: calc(20% - 16px);
+      height: 400px;
+      padding: 18px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: flex-start;
+      border-radius: 8px;
+      margin: 8px;
+
+      .car-header {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+
+          margin-bottom: 12px;
+      }
+      .car-status {
+        padding: 2px 12px;
+        border-radius: 50px;
+        background: #008147be;
+        color: white;
+        font-size: 14px;
+        font-weight: bold;
+        width: fit-content;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .car-title {
+        flex-direction: column;
+        align-items: flex-start;
+
+        .car-brand {
+          font-weight: bold;
+
+          span {
+            color: #4b5267;
+          }
+        }
+      }
+
+      .car-pictures {
+        width: 100%;
+        margin: 12px 0;
+        display: flex;
+        flex-direction: row;
+        overflow: auto;
+        scroll-snap-type: x mandatory;
+        border-radius: 8px;
+
+        .car-picture {
+          scroll-snap-align: start;
+          width: 100%;
+        }
+      }
+      .car-info {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+
+        color: #00000080;
+      }
+
+      .car-actions {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+      }
+    }
+  }
+}
