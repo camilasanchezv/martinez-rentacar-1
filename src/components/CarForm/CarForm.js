@@ -1,11 +1,29 @@
-import React, { useEffect } from 'react';
+import React, { useState, useContext } from 'react';
+import { Form, FormField, TextInput, Box, Button, FileInput } from 'grommet';
+import { AppContext } from '../../context';
 import './styles.scss';
-import { Form, FormField, TextInput, Box, Button, Avatar } from 'grommet';
+
+const defaultValue = {
+    brand: '',
+    model: '',
+    engineNumber: '',
+    entryKM: '',
+    buyValue: '',
+    plate: '',
+}
 
 export default function CarForm() {
-    const [value, setValue] = React.useState({});
+    const [value, setValue] = useState(defaultValue);
+    const context = useContext(AppContext);
+
+    const submitHandler = (e) => {
+        e.preventDefault();
+        context.newCar(value.model, value.engineNumber, value.entryKM, value.buyValue, value.plate)
+        setValue(defaultValue)
+    }
 
     function previewFile() {
+        //TODO: show the default image when the image file is deleted
         const preview = document.querySelector('img');
         const file = document.querySelector('input[type=file]').files[0];
         const reader = new FileReader();
@@ -26,40 +44,51 @@ export default function CarForm() {
     return (
         <div className="car-form-container">
             <Form
+                className="form"
                 value={value}
                 onChange={nextValue => setValue(nextValue)}
-                className="car-form"
+                onSubmit={(e) => submitHandler(e)}
+                onReset={() => setValue(defaultValue)}
             >
-                <div className="form-column picture-form">
-                    <Box className="input" direction="row" gap="small">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Circle-icons-car.svg/1200px-Circle-icons-car.svg.png" className="image" />
-                    </Box>
-                    <input className="file-input" type="file" onChange={previewFile} />
+                <div className="car-form">
+                    <div className="form-column">
+                        <FormField className="input" label="Marca">
+                            <TextInput placeholder="Volkswagen" name="brand" />
+                        </FormField>
+                        <FormField className="input" label="Modelo">
+                            <TextInput placeholder="up!" name="model" />
+                        </FormField>
+                        <FormField className="input" label="Número de Motor">
+                            <TextInput type="number" placeholder="12345" name="engineNumber" />
+                        </FormField>
+                    </div>
+                    <div className="form-column">
+                        <FormField className="input" label="Matrícula">
+                            <TextInput placeholder="ABC1234" name="plate" />
+                        </FormField>
+                        <FormField className="input" label="Kilómetros de Entrada">
+                            <TextInput type="number" placeholder="0" name="entryKM" />
+                        </FormField>
+                        <FormField className="input" label="Valor de Compra (USD)">
+                            <TextInput type="number" placeholder="14890" name="buyValue" />
+                        </FormField>
+                    </div>
+                    <div className="form-column last-form">
+                        <div className="picture-form">
+                            <Box className="input" direction="row" gap="small">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Circle-icons-car.svg/1200px-Circle-icons-car.svg.png" className="image" />
+                            </Box>
+                            <div className="file-input">
+                                <FileInput className="file-input" type="file" onChange={previewFile} />
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div className="form-column">
-                    <FormField className="input" label="Marca">
-                        <TextInput placeholder="Volkswagen" />
-                    </FormField>
-                    <FormField className="input" label="Modelo">
-                        <TextInput placeholder="up!" />
-                    </FormField>
-                    <FormField className="input" label="Número de Motor">
-                        <TextInput type="number" placeholder="12345" />
-                    </FormField>
-                    <FormField className="input" label="Número de Chasis">
-                        <TextInput type="number" placeholder="12345" />
-                    </FormField>
-                    <FormField className="input" label="Kilómetros de Entrada">
-                        <TextInput type="number" placeholder="0" />
-                    </FormField>
-                    <FormField className="input" label="Valor de Compra (USD)">
-                        <TextInput type="number" placeholder="14890" />
-                    </FormField>
-                </div>
+                <Box className="button" direction="row" gap="medium">
+                    <Button type="submit" label="Enviar" primary />
+                    <Button className="reset" type="reset" label="Borrar" />
+                </Box>
             </Form>
-            <Box className="button" direction="row" gap="medium">
-                <Button type="submit" primary label="Enviar" />
-            </Box>
         </div>
     )
 }

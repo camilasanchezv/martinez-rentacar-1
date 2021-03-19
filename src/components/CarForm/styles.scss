@@ -1,48 +1,64 @@
 .car-form-container{
+  width: 100%;
+  overflow: auto;
 
-  /* Form Display */
-  .car-form{
-    text-align: start;
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-  }
-
-  .image{
-    width: 350px;
-    height: 350px;
-    border-radius: 50%;
-    object-fit: cover;
-  }
-
-  .picture-form{
-    align-items: center;
-  }
-
-  .file-input{
-    margin: 16px 0;
-    align-items: center;
-  }
-
-  .form-column{
-    width: 350px;
+  .form {
     display: flex;
     flex-direction: column;
-  }
 
-  /* Form */
-  .button {
-    margin-top: 24px;
-    justify-content: center;
-  }
+    gap: 50px;
+    padding: 50px;
 
-  .input{
-    font-size: 18px;
-    padding-bottom: 4px;
+    .car-form {
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: row;
 
-    input{
-      padding: 8px 12px;
+      width: 100%;
+      gap: 100px;
+  
+      .form-column {
+        display: flex;
+        flex-direction: column;
+        width: 450px;
+        gap: 24px;
+      }
+
+      .last-form {
+        width: auto;
+      }
+
+      .picture-form{
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+
+        .image{
+          width: 225px;
+          height: 225px;
+          border-radius: 50%;
+          object-fit: cover;
+          
+        }
+
+        .file-input{
+          margin: 16px 0;
+          align-items: center;
+          margin-bottom: 12px;
+        }
+      }
+
+      .input {
+        font-size: 16px;
+      }
+    }
+
+    .button {
+      button {
+      width: 150px;
+      }
     }
   }
 
@@ -59,67 +75,104 @@
   }
 
   /* Media */
-  @media (max-width: 880px) {
-    .car-form{
-      display: flex;
-      flex-direction: column;
+
+  @media (max-width: 1618px) {
+    .form {
+
+      .car-form {
+        gap: 50px;
+
+        .form-column {
+          width: 325px;
+        }
+      }
+
+      .button {
+        width: 30%;
+      }
     }
+  }
+
+  @media (max-width: 1370px) {
+    .form {
+
+      .car-form {
+        display: flex;
+        justify-content: center;
+        gap: 24px;
     
-  }
-  @media (max-width: 680px) {
-    .form-column{
-      width: 62vw;
-    }
-
-    .image{
-      width: 62vw;
-      height: 62vw;
-    }
-  
-    .file-input{
-      padding: 5vw 0;
-    }
-
-    /* Form */
-    .button {
-      margin-top: 10vw;
-    }
-
-    .input{
-      font-size: 3.2vw;
-      padding-bottom: 1vw;
-    }
-
-    .input input{
-      padding: 1vw 2vw;
+        .form-column {
+          width: 50%;
+        }
+      }
     }
   }
-  @media (max-width: 375px) {
-    .form-column{
-      width: 268px;
-    }
 
-    .image{
-      width: 268px;
-      height: 268px;
-    }
-  
-    .file-input{
-      padding: 8px 0;
-    }
+  @media (max-width: 983px) {
+    .form {
 
-    /* Form */
-    .button {
-      margin-top: 8px;
-    }
+      .car-form {
+        display: flex;
+        flex-direction: column;
 
-    .input{
-      font-size: 12px;
-      padding-bottom: 8px;
-    }
+        .form-column {
+          width: 100%;
+        }
 
-    .input input{
-      padding: 4px 8px;
+        .picture-form{
+          .image{
+            display: none;
+          }
+        }
+      }
+
+      .button {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+
+        .reset{
+          display: none;
+        }
+
+        button {
+          width: 30%;
+          min-width: 150px;
+          font-size: 125%;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 450px) {
+    .form {
+      padding: 0;
+
+      .customer-form{
+        display: flex;
+        flex-direction: column;
+        gap: 1vw;
+
+        .form-column {
+          display: flex;
+          flex-direction: column;
+          gap: 1vw;
+        }
+      }
+
+      .input{
+        label{
+          margin-top: 0;
+          margin-bottom: 0;
+        }
+        .label{
+          font-size: 3vw;
+        }
+        .placeholder{
+          height: 1vw;
+          font-size: 3vw;
+        }
+      }
     }
   }
 }

@@ -1,5 +1,5 @@
 import React, { createContext, useEffect, useState } from 'react';
-import { listCustomers, createCustomer } from '../services/api/customerService';
+import { listCustomers, createCustomer, createCar } from '../services/api/customerService';
 
 import { useHistory } from 'react-router-dom'
 export const AppContext = createContext(null);
@@ -42,6 +42,8 @@ const AppContextContainer = ({ children }) => {
     }, [history])
 
     const generateNewTitle = pathname => setTitle(getTitleByPathname(pathname))
+
+    // GET CUSTOMERS
     const getCustomersList = async () => {
         setLoading(true)
         const response = await listCustomers();
@@ -52,9 +54,17 @@ const AppContextContainer = ({ children }) => {
         setLoading(false)
     }
 
+    // NEW CUSTOMER
     const newCustomer = async (firstName, lastName, ci, phone, email, birthDate) => {
         setLoading(true);
         await createCustomer(firstName, lastName, ci, phone, email, birthDate);
+        setLoading(false)
+    }
+
+    // NEW CAR
+    const newCar = async (model, engineNumber, entryKM, buyValue, plate) => {
+        setLoading(true);
+        await createCar(model, engineNumber, entryKM, buyValue, plate);
         setLoading(false)
     }
 
@@ -64,6 +74,7 @@ const AppContextContainer = ({ children }) => {
         getCustomersList,
         loading,
         newCustomer,
+        newCar,
         title
     }
 
