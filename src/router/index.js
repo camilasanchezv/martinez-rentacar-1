@@ -1,32 +1,43 @@
 import React from "react";
-import {
-    Switch,
-    Route,
-} from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 import { Car, Customer, ListOfCustomers, ListOfCars } from "../screens";
+import { isLoggedIn } from "../utils/Auth";
+
+const PrivateRoute = ({ children: Component, ...rest }) => {
+  return (
+    <Route {...rest}>
+      isLoggedIn() ?
+        {Component}
+      : <Redirect to="/login" />
+    </Route>
+  );
+};
 
 export default function MainRouter() {
-    return (
-        <Switch>
-            <Route path="/customer">
-                <Customer />
-            </Route>
-            <Route path="/customers-list">
-                <ListOfCustomers />
-            </Route>
-            <Route path="/car">
-                <Car />
-            </Route>
-            <Route path="/cars-list">
-                <ListOfCars />
-            </Route>
-            <Route path="/">
-                <Home />
-            </Route>
-        </Switch>
-    );
+  return (
+    <Switch>
+      <PrivateRoute path="/customer">
+        <Customer />
+      </PrivateRoute>
+      <PrivateRoute path="/customers-list">
+        <ListOfCustomers />
+      </PrivateRoute>
+      <PrivateRoute path="/car">
+        <Car />
+      </PrivateRoute>
+      <PrivateRoute path="/cars-list">
+        <ListOfCars />
+      </PrivateRoute>
+      <PrivateRoute path="/">
+        <Home />
+      </PrivateRoute>
+    </Switch>
+  );
 }
 
 function Home() {
-    return <h2>Martinez Rent a car</h2>;
+  return <h2>Martinez Rent a car</h2>;
 }
+
+
+

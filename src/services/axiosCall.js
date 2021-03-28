@@ -1,5 +1,5 @@
 import axios from 'axios';
-
+import { getToken } from '../utils/Auth'
 const axiosInstance = axios.create({
     headers: {
         "Content-Type": "application/json",
@@ -28,7 +28,7 @@ export const authAxiosCall = async (path, requestOptions) => {
     return await axiosCall(path, {
         ...requestOptions,
         headers: {
-            authorization: 'bearer 12693gf1wydvb981g6eg12gw078g',
+            authorization: getToken(),
             ...requestOptions.headers
         }
     })
