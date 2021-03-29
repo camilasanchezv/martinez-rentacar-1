@@ -1,0 +1,146 @@
+.user-form-container{
+    width: 100%;
+  
+    .form {
+      display: flex;
+      flex-direction: column;
+  
+      gap: 50px;
+      padding: 50px;
+  
+      .user-form {
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: row;
+  
+        width: 100%;
+  
+        gap: 100px;
+    
+        .form-column {
+          display: flex;
+          flex-direction: column;
+          width: 450px;
+          gap: 24px;
+        }
+  
+        .input {
+          font-size: 16px;
+        }
+      }
+  
+      .button {
+        button {
+        width: 150px;
+        }
+      }
+    }
+  
+    /* Hiding arrows in input type: number */
+    /* Chrome, Safari, Edge, Opera */
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+    /* Firefox */
+    input[type=number] {
+      -moz-appearance: textfield;
+    }
+  
+    /* Media */
+    @media (max-width: 1291px) {
+      .form {
+  
+        .user-form {
+          display: flex;
+          justify-content: center;
+          gap: 24px;
+      
+          .form-column {
+            width: 50%;
+          }
+        }
+    
+        .button {
+          button {
+          width: 20%;
+          }
+        }
+      }
+    }
+  
+    @media (max-width: 768px) {
+      .form {
+  
+        .user-form {
+          display: flex;
+          flex-direction: column;
+  
+          .form-column {
+            width: 100%;
+          }
+        }
+    
+        .button {
+          display: flex;
+          justify-content: center;
+  
+          button {
+          width: 150px;
+          }
+        }
+      }
+    }
+  
+    @media (max-width: 568px) {
+      .form {
+        padding: 6vw;
+  
+        .button {
+          .reset{
+            display: none;
+          }
+        }
+  
+        .button {
+          button {
+          width: 50%;
+          font-size: 100%;
+          }
+        }
+      }
+    }
+  
+    @media (max-width: 450px) {
+      .form {
+        padding: 0;
+  
+        .user-form{
+          display: flex;
+          flex-direction: column;
+          gap: 1vw;
+  
+          .form-column {
+            display: flex;
+            flex-direction: column;
+            gap: 1vw;
+          }
+        }
+  
+        .input{
+          label{
+            margin-top: 0;
+            margin-bottom: 0;
+          }
+          .label{
+            font-size: 3vw;
+          }
+          .placeholder{
+            height: 1vw;
+            font-size: 3vw;
+          }
+        }
+      }
+    }
+  }

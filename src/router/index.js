@@ -1,13 +1,13 @@
 import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
-import { Car, Customer, ListOfCustomers, ListOfCars } from "../screens";
+import { Car, Customer, ListOfCustomers, ListOfCars, SignUp } from "../screens";
 import { isLoggedIn } from "../utils/Auth";
 
 const PrivateRoute = ({ children: Component, ...rest }) => {
   return (
     <Route {...rest}>
       isLoggedIn() ?
-        {Component}
+      {Component}
       : <Redirect to="/login" />
     </Route>
   );
@@ -15,22 +15,27 @@ const PrivateRoute = ({ children: Component, ...rest }) => {
 
 export default function MainRouter() {
   return (
+
+    // change each Route to PrivateRoute when sign up finished
     <Switch>
-      <PrivateRoute path="/customer">
+      <Route path="/sign-up">
+        <SignUp />
+      </Route>
+      <Route path="/customer">
         <Customer />
-      </PrivateRoute>
-      <PrivateRoute path="/customers-list">
+      </Route>
+      <Route path="/customers-list">
         <ListOfCustomers />
-      </PrivateRoute>
-      <PrivateRoute path="/car">
+      </Route>
+      <Route path="/car">
         <Car />
-      </PrivateRoute>
-      <PrivateRoute path="/cars-list">
+      </Route>
+      <Route path="/cars-list">
         <ListOfCars />
-      </PrivateRoute>
-      <PrivateRoute path="/">
+      </Route>
+      <Route path="/">
         <Home />
-      </PrivateRoute>
+      </Route>
     </Switch>
   );
 }

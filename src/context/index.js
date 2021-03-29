@@ -1,19 +1,25 @@
 import React, { createContext, useEffect, useState } from 'react';
 import { listCustomers, createCustomer } from '../services/api/customerService';
-import {createCar, listCars} from '../services/api/carService';
+import { createCar, listCars } from '../services/api/carService';
+import { createUser } from '../services/api/userService';
 
 import { useHistory } from 'react-router-dom'
 export const AppContext = createContext(null);
 
+// TITLES
 const PageTitles = {
     customer: "Nuevo Cliente",
     car: "Nuevo Auto",
     customerslist: "Lista de Clientes",
-    carsList: "Lista de Autos"
+    carslist: "Lista de Autos",
+    signup: "Nuevo Usuario"
 }
 
 const getTitleByPathname = path => {
     switch (true) {
+        case path.startsWith("/sign-up"):
+            return PageTitles['signup'];
+
         case path.startsWith("/customers-list"):
             return PageTitles['customerslist'];
 
@@ -33,6 +39,7 @@ const getTitleByPathname = path => {
     }
 }
 
+// CONTEXT
 const AppContextContainer = ({ children }) => {
     const [title, setTitle] = useState("")
 
@@ -60,13 +67,13 @@ const AppContextContainer = ({ children }) => {
 
         setLoading(false)
     }
-
     // NEW CUSTOMER
     const newCustomer = async (firstName, lastName, ci, phone, email, birthDate) => {
         setLoading(true);
         await createCustomer(firstName, lastName, ci, phone, email, birthDate);
         setLoading(false)
     }
+
     // GET CARS
     const getCarsList = async () => {
         setLoading(true)
@@ -77,7 +84,6 @@ const AppContextContainer = ({ children }) => {
 
         setLoading(false)
     }
-
     // NEW CAR
     const newCar = async (brand, model, engineNumber, entryKM, buyValue, plate) => {
         setLoading(true);
@@ -85,7 +91,14 @@ const AppContextContainer = ({ children }) => {
         setLoading(false)
     }
 
-    
+    // NEW USER
+    const newUser = async (firstName, lastName, phone, email, password) => {
+        setLoading(true);
+        await createUser(firstName, lastName, phone, email, password);
+        setLoading(false)
+    }
+
+
 
     const context = {
         setCustomers,
@@ -97,6 +110,7 @@ const AppContextContainer = ({ children }) => {
         getCarsList,
         cars,
         title,
+        newUser,
     }
 
     return <AppContext.Provider value={context}>
