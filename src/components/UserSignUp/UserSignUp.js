@@ -51,20 +51,20 @@ export default function UserForm() {
                             <TextInput className="placeholder" name="email" placeholder="agustinfernandez@ejemplo.com" required />
                         </FormField>
                         <FormField className="input" label={<Text className="label" >Contraseña</Text>}>
-                            <Box
-                                className="password-box"
-                                direction="row"
-                            >
+                            <div className="password-box focus" direction="row">
                                 <TextInput
+                                    className="focus"
                                     plain
                                     type={reveal ? 'text' : 'password'}
                                     name="password"
+                                    required
                                 />
                                 <Button
+                                    className="password-icon focus"
                                     icon={reveal ? <View size="medium" /> : <Hide size="medium" />}
                                     onClick={() => setReveal(!reveal)}
                                 />
-                            </Box>
+                            </div>
                         </FormField>
                     </div>
                 </div>
