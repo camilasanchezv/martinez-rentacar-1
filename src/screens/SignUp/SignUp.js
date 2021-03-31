@@ -3,10 +3,10 @@ import { UserSignUp, Container } from '../../components';
 import './styles.scss';
 
 
-export default function Customer() {
+export default function SignUp() {
     return (
         <Container>
-            <div className="customer-container">
+            <div className="sign-up-container">
                 <UserSignUp />
             </div>
         </Container>

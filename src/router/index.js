@@ -16,26 +16,25 @@ const PrivateRoute = ({ children: Component, ...rest }) => {
 export default function MainRouter() {
   return (
 
-    // change each Route to PrivateRoute when sign up finished
     <Switch>
-      <Route path="/sign-up">
+      <PrivateRoute path="/sign-up">
         <SignUp />
-      </Route>
-      <Route path="/customer">
+      </PrivateRoute>
+      <PrivateRoute path="/customer">
         <Customer />
-      </Route>
-      <Route path="/customers-list">
+      </PrivateRoute>
+      <PrivateRoute path="/customers-list">
         <ListOfCustomers />
-      </Route>
-      <Route path="/car">
+      </PrivateRoute>
+      <PrivateRoute path="/car">
         <Car />
-      </Route>
-      <Route path="/cars-list">
+      </PrivateRoute>
+      <PrivateRoute path="/cars-list">
         <ListOfCars />
-      </Route>
-      <Route path="/">
+      </PrivateRoute>
+      <PrivateRoute path="/">
         <Home />
-      </Route>
+      </PrivateRoute>
     </Switch>
   );
 }

@@ -8,6 +8,7 @@ import { Router, Switch, Route } from "react-router-dom";
 import { createBrowserHistory } from "history";
 import AppContextContainer from "./context";
 import { Header, Loading } from "./components";
+import { Login } from "./screens";
 
 const history = createBrowserHistory();
 
@@ -59,7 +60,7 @@ const AppRouter = () => {
   return (
     <Switch>
       <Route path="/login">
-        <p>Login!~</p>
+        <Login />
       </Route>
       <Route path="/">
         <MainComponent />
