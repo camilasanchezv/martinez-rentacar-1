@@ -1,9 +1,10 @@
 import React, { createContext, useEffect, useState } from 'react';
 import { listCustomers, createCustomer } from '../services/api/customerService';
 import { createCar, listCars } from '../services/api/carService';
-import { createUser } from '../services/api/userService';
+import { createUser, signIn } from '../services/api/userService';
 
 import { useHistory } from 'react-router-dom'
+import { setCurrentUser, setToken } from '../utils/Auth';
 export const AppContext = createContext(null);
 
 // TITLES
@@ -98,6 +99,22 @@ const AppContextContainer = ({ children }) => {
         setLoading(false)
     }
 
+    // SIGN IN
+    const logIn = async (email, password) => {
+        setLoading(true);
+        try {
+            const response = await signIn(email, password);
+            const { accessToken, ...user } = response.data;
+
+            setToken(accessToken);
+            setCurrentUser(user)
+            history.push('/home')
+        } catch (error) {
+            return { error: 'usuario o contraseña inválidos' }
+        }
+        setLoading(false)
+    }
+
 
 
     const context = {
@@ -111,6 +128,7 @@ const AppContextContainer = ({ children }) => {
         cars,
         title,
         newUser,
+        logIn
     }
 
     return <AppContext.Provider value={context}>

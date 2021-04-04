@@ -4,8 +4,8 @@ const CURRENT_USER = 'current_user';
 
 const setJsonValue = (key, value) => {
   storage.setItem(
-      key,
-      JSON.stringify(value)
+    key,
+    JSON.stringify(value)
   );
 };
 
@@ -15,7 +15,7 @@ const getJsonValue = (key) => {
   if (encodedStoredToken) {
     try {
       result = JSON.parse(encodedStoredToken);
-    } catch (e) {}
+    } catch (e) { }
   }
   return result;
 };
@@ -47,8 +47,15 @@ export function deleteCurrentUser() {
 
 
 export const isLoggedIn = () => {
-    const currentUser =  getCurrentUser();
-    const authToken = getToken();
+  const currentUser = getCurrentUser();
+  const authToken = getToken();
 
-    return !!currentUser && !!authToken
+  return !!currentUser && !!authToken
+}
+
+export const logOut = () => {
+  deleteToken();
+  deleteCurrentUser()
+
+  window.location.reload();
 }

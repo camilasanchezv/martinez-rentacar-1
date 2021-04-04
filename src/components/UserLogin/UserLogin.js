@@ -10,15 +10,22 @@ const defaultValue = {
 }
 
 export default function UserLogin() {
-    const [value, setValue] = useState(defaultValue);
+    const [error, setError] = useState(null);
 
+    const [value, setValue] = useState(defaultValue);
     const [reveal, setReveal] = React.useState(false);
 
     const context = useContext(AppContext);
 
-    const submitHandler = (e) => {
+    const submitHandler = async (e) => {
+        setError(null);
         e.preventDefault();
-        // context.newUser(value.firstName, value.lastName, value.phone, value.email, value.password);
+
+        const response = await context.logIn(value.email, value.password);
+        if (response && response.error) {
+            return setError(response.error);
+        }
+
         setValue(defaultValue);
     }
     return (

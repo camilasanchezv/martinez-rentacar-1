@@ -6,9 +6,9 @@ import { isLoggedIn } from "../utils/Auth";
 const PrivateRoute = ({ children: Component, ...rest }) => {
   return (
     <Route {...rest}>
-      isLoggedIn() ?
-      {Component}
-      : <Redirect to="/login" />
+      {isLoggedIn() ?
+        Component
+        : <Redirect to="/login" />}
     </Route>
   );
 };
