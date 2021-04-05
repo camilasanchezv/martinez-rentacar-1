@@ -11,7 +11,7 @@ const defaultValue = {
 }
 
 export default function UserLogin() {
-    const { enqueueSnackbar } = useSnackbar();
+    const { enqueueSnackbar, closeSnackbar } = useSnackbar();
     const [value, setValue] = useState(defaultValue);
     const [reveal, setReveal] = React.useState(false);
     const context = useContext(AppContext);
@@ -24,6 +24,7 @@ export default function UserLogin() {
             enqueueSnackbar(response.error, { variant: 'error' });
             return
         }
+        closeSnackbar();
 
         setValue(defaultValue);
     }
