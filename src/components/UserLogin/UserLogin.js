@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 import { Form, FormField, TextInput, Box, Button, Text } from 'grommet';
 import { AppContext } from '../../context';
 import { Hide, View } from 'grommet-icons';
+import { useSnackbar } from 'notistack';
 import './styles.scss';
 
 const defaultValue = {
@@ -10,20 +11,18 @@ const defaultValue = {
 }
 
 export default function UserLogin() {
-    const [error, setError] = useState(null);
-
+    const { enqueueSnackbar } = useSnackbar();
     const [value, setValue] = useState(defaultValue);
     const [reveal, setReveal] = React.useState(false);
-
     const context = useContext(AppContext);
 
     const submitHandler = async (e) => {
-        setError(null);
         e.preventDefault();
 
         const response = await context.logIn(value.email, value.password);
         if (response && response.error) {
-            return setError(response.error);
+            enqueueSnackbar(response.error, { variant: 'error' });
+            return
         }
 
         setValue(defaultValue);

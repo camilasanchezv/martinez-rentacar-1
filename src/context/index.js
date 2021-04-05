@@ -109,8 +109,16 @@ const AppContextContainer = ({ children }) => {
             setToken(accessToken);
             setCurrentUser(user)
             history.push('/home')
+
         } catch (error) {
-            return { error: 'usuario o contraseña inválidos' }
+            setLoading(false);
+            if (error.response.status == 404) {
+                return { error: 'Usuario inválido' }
+            } else if (error.response.status == 401) {
+                return { error: 'Contraseña inválida' }
+            } else {
+                return { error: 'Ha ocurrido un error' }
+            }
         }
         setLoading(false)
     }
