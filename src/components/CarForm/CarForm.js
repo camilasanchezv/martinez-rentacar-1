@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Form, FormField, TextInput, Box, Button, FileInput } from 'grommet';
 import { AppContext } from '../../context';
 import './styles.scss';
@@ -18,18 +18,20 @@ export default function CarForm() {
 
     const submitHandler = (e) => {
         e.preventDefault();
-        context.newCar(value.brand, value.model, value.engineNumber, value.entryKM, value.buyValue, value.plate)
-        setValue(defaultValue)
+        context.newCar(value.brand, value.model, value.engineNumber, value.entryKM, value.buyValue, value.plate, value.image)
+        setValue(defaultValue);
+        //console.log('luego de enviado', value.image)
     }
 
-    function previewFile() {
-        //TODO: show the default image when the image file is deleted
+    useEffect(() => {
         const preview = document.querySelector('img');
         const file = document.querySelector('input[type=file]').files[0];
         const reader = new FileReader();
 
+
+        //console.log(file);
+
         reader.addEventListener("load", function () {
-            // convert image file to base64 string
             preview.src = reader.result;
         }, false);
 
@@ -37,9 +39,11 @@ export default function CarForm() {
             reader.readAsDataURL(file);
         }
         else {
-            preview.src = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Circle-icons-car.svg/1200px-Circle-icons-car.svg.png"
+            preview.src = "https://cdn4.iconfinder.com/data/icons/interface-79/24/add_small_interface_plus-512.png"
         }
-    }
+
+        //console.log(value.image)
+    }, [value.image])
 
     return (
         <div className="car-form-container">
@@ -76,10 +80,10 @@ export default function CarForm() {
                     <div className="form-column last-form">
                         <div className="picture-form">
                             <Box className="input" direction="row" gap="small">
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Circle-icons-car.svg/1200px-Circle-icons-car.svg.png" className="image" />
+                                <img className="image" />
                             </Box>
                             <div className="file-input">
-                                <FileInput className="file-input" type="file" onChange={previewFile} />
+                                <FileInput className="file-input" type="file" name="image" />
                             </div>
                         </div>
                     </div>
