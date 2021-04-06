@@ -148,7 +148,7 @@
     .form {
       padding: 0;
 
-      .customer-form{
+      .car-form{
         display: flex;
         flex-direction: column;
         gap: 1vw;
@@ -164,13 +164,6 @@
         label{
           margin-top: 0;
           margin-bottom: 0;
-        }
-        .label{
-          font-size: 3vw;
-        }
-        .placeholder{
-          height: 1vw;
-          font-size: 3vw;
         }
       }
     }

@@ -1,0 +1,138 @@
+.user-form-container{
+  width: 100%;
+  overflow: auto;
+  
+    .form {
+      display: flex;
+      flex-direction: column;
+  
+      gap: 50px;
+      padding: 50px;
+  
+      .user-form {
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: row;
+  
+        width: 100%;
+        gap: 100px;
+    
+        .form-column {
+          display: flex;
+          flex-direction: column;
+          width: 450px;
+          gap: 24px;
+        }
+  
+        .input {
+          font-size: 16px;
+        }
+
+        .password-box {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+
+          font-size: 16px;
+        }
+
+        .password-icon {
+          padding: 0;
+          margin: 0 11px 0 11px;
+        }
+
+        .focus:focus {
+          box-shadow: none;
+        }
+      }
+  
+      .button {
+        button {
+        width: 150px;
+        }
+      }
+    }
+  
+    /* Hiding arrows in input type: number */
+    /* Chrome, Safari, Edge, Opera */
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+    /* Firefox */
+    input[type=number] {
+      -moz-appearance: textfield;
+    }
+  
+  /* Media */
+  @media (max-width: 1292px) {
+    .form {
+
+      .user-form {
+        display: flex;
+        justify-content: center;
+        gap: 24px;
+    
+        .form-column {
+          width: 50%;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 983px) {
+    .form {
+
+      .user-form {
+        display: flex;
+        flex-direction: column;
+
+        .form-column {
+          width: 100%;
+        }
+      }
+
+      .button {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+
+        .reset{
+          display: none;
+        }
+
+        button {
+          width: 30%;
+          min-width: 150px;
+          font-size: 125%;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 450px) {
+    .form {
+      padding: 0;
+
+      .user-form{
+        display: flex;
+        flex-direction: column;
+        gap: 1vw;
+
+        .form-column {
+          display: flex;
+          flex-direction: column;
+          gap: 1vw;
+        }
+      }
+
+      .input{
+        label{
+          margin-top: 0;
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+}

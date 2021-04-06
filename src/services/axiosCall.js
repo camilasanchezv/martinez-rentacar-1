@@ -1,5 +1,5 @@
 import axios from 'axios';
-
+import { getToken } from '../utils/Auth'
 const axiosInstance = axios.create({
     headers: {
         "Content-Type": "application/json",
@@ -8,11 +8,12 @@ const axiosInstance = axios.create({
 });
 
 const axiosCall = async (path, { query, ...requestOptions }) => {
+    console.log(requestOptions)
     const response = await axiosInstance({
         method: requestOptions.method,
         url: `https://martinez-rentacar.herokuapp.com/api/v1/${path}`,
         data: requestOptions.body,
-        header: requestOptions.header
+        headers: requestOptions.headers
     })
 
     if (response.status >= 200 && response.status < 400) return response
@@ -28,7 +29,7 @@ export const authAxiosCall = async (path, requestOptions) => {
     return await axiosCall(path, {
         ...requestOptions,
         headers: {
-            authorization: 'bearer 12693gf1wydvb981g6eg12gw078g',
+            authorization: getToken(),
             ...requestOptions.headers
         }
     })

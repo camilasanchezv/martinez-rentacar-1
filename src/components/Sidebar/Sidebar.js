@@ -4,7 +4,7 @@ import { Tooltip } from '..';
 import { withRouter } from "react-router-dom";
 
 import { Sidebar, Avatar, Button, Nav } from 'grommet';
-import { Group, UserAdd, Car, CircleQuestion, List  } from 'grommet-icons';
+import { Group, UserAdd, Car, CircleQuestion, List, UserAdmin } from 'grommet-icons';
 
 import './styles.scss'
 
@@ -26,17 +26,20 @@ const SidebarNavigation = ({ history }) => {
                 }
             >
                 <Nav gap="small">
-                    <Tooltip message="Nuevo cliente">
+                    <Tooltip message="Nuevo Cliente">
                         <Button className="nav-button" onClick={() => handleNavigate('/customer')} icon={<UserAdd />} hoverIndicator />
                     </Tooltip>
-                    <Tooltip message="Lista de clientes">
+                    <Tooltip message="Lista de Clientes">
                         <Button className="nav-button" onClick={() => handleNavigate('/customers-list')} icon={<Group />} hoverIndicator />
                     </Tooltip>
-                    <Tooltip message="Nuevo auto">
+                    <Tooltip message="Nuevo Auto">
                         <Button className="nav-button" onClick={() => handleNavigate('/car')} icon={<Car />} hoverIndicator />
                     </Tooltip>
-                    <Tooltip message="Lista de autos">
+                    <Tooltip message="Lista de Autos">
                         <Button className="nav-button" onClick={() => handleNavigate('/cars-list')} icon={<List />} hoverIndicator />
+                    </Tooltip>
+                    <Tooltip message="Nuevo Usuario">
+                        <Button className="nav-button" onClick={() => handleNavigate('/sign-up')} icon={<UserAdmin />} hoverIndicator />
                     </Tooltip>
                 </Nav>
             </Sidebar>

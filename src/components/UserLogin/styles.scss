@@ -1,0 +1,45 @@
+.user-login-container {
+    width: 100%;
+    overflow: auto;
+    
+        .user-login {
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            gap: 24px;
+    
+            .input {
+                font-size: 16px;
+            }
+  
+            .password-box {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+  
+                font-size: 16px;
+            }
+  
+            .password-icon {
+                padding: 0;
+                margin: 0 11px 0 11px;
+              }
+  
+            .focus:focus {
+                box-shadow: none;
+            }
+        }
+    
+        .button {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+
+            padding: 64px;
+
+            button {
+            width: 150px;
+            }
+        }  
+}

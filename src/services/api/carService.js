@@ -1,4 +1,4 @@
-import {unauthAxiosCall} from '../axiosCall';
+import { unauthAxiosCall, authAxiosCall } from '../axiosCall';
 
 
 export const createCar = async (brand, model, engineNumber, entryKM, buyValue, plate) => {
@@ -11,7 +11,7 @@ export const createCar = async (brand, model, engineNumber, entryKM, buyValue, p
 }
 
 export const listCars = async () => {
-    return unauthAxiosCall('car/list', {
+    return authAxiosCall('car/list', {
         method: "GET",
     })
 }

@@ -1,0 +1,38 @@
+.login-screen {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+
+    width: 100vw;
+    height: 100vh;
+    background-color: #242f40;  
+
+    .login-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        width: 25%;
+        min-width: 400px;
+
+        box-sizing: border-box;
+        padding: 48px;
+        background-color: #ffffff;
+
+        .brand {
+            margin: 48px 0;
+            text-align: center;
+
+            .heading {
+                font-size: 56px;
+                margin: 0;
+            }
+
+            .small-heading {
+                font-size: 24px;
+                margin: 0;
+            }
+
+        }
+    }
+}

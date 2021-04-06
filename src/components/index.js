@@ -6,8 +6,10 @@ import Tooltip from './Tooltip';
 import Loading from './Loading';
 import Header from './Header';
 import Container from './Container';
-import CustomersList from './CustomersList'
-import CarsList from './CarsList'
+import CustomersList from './CustomersList';
+import CarsList from './CarsList';
+import UserSignUp from './UserSignUp';
+import UserLogin from './UserLogin'
 
 export {
     Title,
@@ -19,5 +21,7 @@ export {
     Header,
     Container,
     CustomersList,
-    CarsList
+    CarsList,
+    UserSignUp,
+    UserLogin
 }
