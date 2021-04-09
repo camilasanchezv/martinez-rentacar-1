@@ -15,34 +15,31 @@ const defaultValue = {
 export default function CarForm() {
     const [value, setValue] = useState(defaultValue);
     const context = useContext(AppContext);
+    const [image, setImage] = useState(null);
 
-    const submitHandler = (e) => {
+    const submitHandler = async (e) => {
         e.preventDefault();
-        context.newCar(value.brand, value.model, value.engineNumber, value.entryKM, value.buyValue, value.plate, value.image)
+        await context.newCar(value.brand, value.model, value.engineNumber, value.entryKM, value.buyValue, value.plate, value.image)
+        setImage('https://cdn4.iconfinder.com/data/icons/interface-79/24/add_small_interface_plus-512.png')
+        const dataTransfer = new DataTransfer();
+        document.querySelector('input[type=file]').files = dataTransfer.files;
         setValue(defaultValue);
-        //console.log('luego de enviado', value.image)
     }
 
     useEffect(() => {
-        const preview = document.querySelector('img');
         const file = document.querySelector('input[type=file]').files[0];
         const reader = new FileReader();
 
-
-        //console.log(file);
-
         reader.addEventListener("load", function () {
-            preview.src = reader.result;
+            setImage(reader.result)
         }, false);
 
         if (file) {
             reader.readAsDataURL(file);
-        }
-        else {
-            preview.src = "https://cdn4.iconfinder.com/data/icons/interface-79/24/add_small_interface_plus-512.png"
+        } else {
+            setImage('https://cdn4.iconfinder.com/data/icons/interface-79/24/add_small_interface_plus-512.png');
         }
 
-        //console.log(value.image)
     }, [value.image])
 
     return (
@@ -80,7 +77,7 @@ export default function CarForm() {
                     <div className="form-column last-form">
                         <div className="picture-form">
                             <Box className="input" direction="row" gap="small">
-                                <img className="image" />
+                                <img className="image" src={image} />
                             </Box>
                             <div className="file-input">
                                 <FileInput className="file-input" type="file" name="image" />
