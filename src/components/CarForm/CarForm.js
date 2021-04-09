@@ -1,5 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { Form, FormField, TextInput, Box, Button, FileInput } from 'grommet';
+import { useSnackbar } from 'notistack';
 import { AppContext } from '../../context';
 import './styles.scss';
 
@@ -16,10 +17,13 @@ export default function CarForm() {
     const [value, setValue] = useState(defaultValue);
     const context = useContext(AppContext);
     const [image, setImage] = useState(null);
+    const { enqueueSnackbar } = useSnackbar();
 
     const submitHandler = async (e) => {
         e.preventDefault();
         await context.newCar(value.brand, value.model, value.engineNumber, value.entryKM, value.buyValue, value.plate, value.image)
+        enqueueSnackbar('Nuevo auto registrado.')
+
         setImage('https://cdn4.iconfinder.com/data/icons/interface-79/24/add_small_interface_plus-512.png')
         const dataTransfer = new DataTransfer();
         document.querySelector('input[type=file]').files = dataTransfer.files;
