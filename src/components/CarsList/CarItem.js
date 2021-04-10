@@ -4,10 +4,10 @@ import { useHistory } from "react-router-dom";
 export default function CarItem({car: { plate, brand, model, _id}}) {
   const history = useHistory();
 
-
   const handleView = () => {
     history.push(`/car-edit/${_id}`)
   }
+  
   return (
     <div className="car-item">
       <div className="car-wrapper">
