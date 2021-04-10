@@ -6,6 +6,9 @@
     width: 100vw;
     height: 100vh;
     background-color: #242f40;  
+    background-image: url('https://media0.giphy.com/media/5gZW9POUs1SzJszpqi/giphy.gif');
+    background-size: cover;
+    filter: sepia(100%) hue-rotate(190deg) saturate(500%);
 
     .login-container {
         display: flex;
@@ -31,6 +34,10 @@
             .small-heading {
                 font-size: 24px;
                 margin: 0;
+            }
+
+            .logo {
+                width: 260px;
             }
 
         }
