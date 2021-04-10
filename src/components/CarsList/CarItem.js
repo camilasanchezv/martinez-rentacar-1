@@ -1,15 +1,20 @@
 import React from "react";
 import { Button, Text } from "grommet";
+import { useHistory } from "react-router-dom";
+export default function CarItem({car: { plate, brand, model, _id}}) {
+  const history = useHistory();
 
-export default function CarItem({car: { plate, brand, model}}) {
 
+  const handleView = () => {
+    history.push(`/car-edit/${_id}`)
+  }
   return (
     <div className="car-item">
       <div className="car-wrapper">
         <div className="car-header">
         <Button label="Alquilado" size="xsmall" color="green" primary />
 
-          <Button label="Ver" size="small" />
+          <Button label="Ver" size="small" onClick={handleView} />
         </div>
         <div className="car-title">
           <Text className="car-brand">

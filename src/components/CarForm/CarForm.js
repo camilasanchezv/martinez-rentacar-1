@@ -1,5 +1,6 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Form, FormField, TextInput, Box, Button, FileInput } from 'grommet';
+import { useSnackbar } from 'notistack';
 import { AppContext } from '../../context';
 import './styles.scss';
 
@@ -15,31 +16,35 @@ const defaultValue = {
 export default function CarForm() {
     const [value, setValue] = useState(defaultValue);
     const context = useContext(AppContext);
+    const [image, setImage] = useState(null);
+    const { enqueueSnackbar } = useSnackbar();
 
-    const submitHandler = (e) => {
+    const submitHandler = async (e) => {
         e.preventDefault();
-        context.newCar(value.brand, value.model, value.engineNumber, value.entryKM, value.buyValue, value.plate)
-        setValue(defaultValue)
+        await context.newCar(value.brand, value.model, value.engineNumber, value.entryKM, value.buyValue, value.plate, value.image)
+        enqueueSnackbar('Nuevo auto registrado.')
+
+        setImage('https://cdn4.iconfinder.com/data/icons/interface-79/24/add_small_interface_plus-512.png')
+        const dataTransfer = new DataTransfer();
+        document.querySelector('input[type=file]').files = dataTransfer.files;
+        setValue(defaultValue);
     }
 
-    function previewFile() {
-        //TODO: show the default image when the image file is deleted
-        const preview = document.querySelector('img');
+    useEffect(() => {
         const file = document.querySelector('input[type=file]').files[0];
         const reader = new FileReader();
 
         reader.addEventListener("load", function () {
-            // convert image file to base64 string
-            preview.src = reader.result;
+            setImage(reader.result)
         }, false);
 
         if (file) {
             reader.readAsDataURL(file);
+        } else {
+            setImage('https://cdn4.iconfinder.com/data/icons/interface-79/24/add_small_interface_plus-512.png');
         }
-        else {
-            preview.src = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Circle-icons-car.svg/1200px-Circle-icons-car.svg.png"
-        }
-    }
+
+    }, [value.image])
 
     return (
         <div className="car-form-container">
@@ -76,10 +81,10 @@ export default function CarForm() {
                     <div className="form-column last-form">
                         <div className="picture-form">
                             <Box className="input" direction="row" gap="small">
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Circle-icons-car.svg/1200px-Circle-icons-car.svg.png" className="image" />
+                                <img className="image" src={image} />
                             </Box>
                             <div className="file-input">
-                                <FileInput className="file-input" type="file" onChange={previewFile} />
+                                <FileInput className="file-input" type="file" name="image" />
                             </div>
                         </div>
                     </div>

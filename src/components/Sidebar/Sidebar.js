@@ -4,7 +4,7 @@ import { Tooltip } from '..';
 import { withRouter } from "react-router-dom";
 
 import { Sidebar, Avatar, Button, Nav } from 'grommet';
-import { Group, UserAdd, Car, CircleQuestion, List, UserAdmin } from 'grommet-icons';
+import { Group, UserAdd, Car, CircleQuestion, List, UserAdmin, Edit } from 'grommet-icons';
 
 import './styles.scss'
 

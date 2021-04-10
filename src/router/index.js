@@ -1,6 +1,6 @@
 import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
-import { Car, Customer, ListOfCustomers, ListOfCars, SignUp } from "../screens";
+import { Car, Customer, ListOfCustomers, ListOfCars, SignUp, CarEdit } from "../screens";
 import { isLoggedIn } from "../utils/Auth";
 
 const PrivateRoute = ({ children: Component, ...rest }) => {
@@ -32,6 +32,12 @@ export default function MainRouter() {
       <PrivateRoute path="/cars-list">
         <ListOfCars />
       </PrivateRoute>
+
+
+      <PrivateRoute path="/car-edit/:id">
+        <CarEdit />
+      </PrivateRoute>
+
       <PrivateRoute path="/">
         <Home />
       </PrivateRoute>

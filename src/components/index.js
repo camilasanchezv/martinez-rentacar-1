@@ -9,7 +9,8 @@ import Container from './Container';
 import CustomersList from './CustomersList';
 import CarsList from './CarsList';
 import UserSignUp from './UserSignUp';
-import UserLogin from './UserLogin'
+import UserLogin from './UserLogin';
+import ModifyCar from './CarView';
 
 export {
     Title,
@@ -23,5 +24,6 @@ export {
     CustomersList,
     CarsList,
     UserSignUp,
-    UserLogin
+    UserLogin,
+    ModifyCar,
 }
