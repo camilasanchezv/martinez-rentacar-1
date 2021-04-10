@@ -10,7 +10,7 @@ import CustomersList from './CustomersList';
 import CarsList from './CarsList';
 import UserSignUp from './UserSignUp';
 import UserLogin from './UserLogin';
-import ModifyCar from './ModifyCar';
+import ModifyCar from './CarView';
 
 export {
     Title,

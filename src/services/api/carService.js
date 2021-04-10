@@ -24,3 +24,10 @@ export const editCar = async (brand, model, engineNumber, entryKM, buyValue, pla
         }
     })
 }
+
+
+export const getCar = async (id) => {
+    return authAxiosCall(`car/${id}`, {
+        method: "GET",
+    })
+}

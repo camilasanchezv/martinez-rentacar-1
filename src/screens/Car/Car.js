@@ -1,11 +1,11 @@
 import React from 'react';
-import { CarForm, Container } from '../../components'
+import { ModifyCar, Container } from '../../components'
 import './styles.scss';
 
 export default function Car() {
     return (
         <Container>
-            <CarForm />
+            <ModifyCar />
         </Container>
     )
 }
