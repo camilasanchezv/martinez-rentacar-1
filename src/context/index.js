@@ -1,6 +1,6 @@
 import React, { createContext, useEffect, useState } from 'react';
 import { listCustomers, createCustomer } from '../services/api/customerService';
-import { createCar, listCars } from '../services/api/carService';
+import { createCar, listCars, editCar } from '../services/api/carService';
 import { createUser, signIn } from '../services/api/userService';
 
 import { useHistory } from 'react-router-dom'
@@ -91,6 +91,12 @@ const AppContextContainer = ({ children }) => {
         await createCar(brand, model, engineNumber, entryKM, buyValue, plate);
         setLoading(false)
     }
+    // MODIFY CAR
+    const modifyCar = async (brand, model, engineNumber, entryKM, buyValue, plate, _id) => {
+        setLoading(true);
+        await editCar(brand, model, engineNumber, entryKM, buyValue, plate, _id);
+        setLoading(false)
+    }
 
     // NEW USER
     const newUser = async (firstName, lastName, phone, email, password) => {
@@ -136,7 +142,8 @@ const AppContextContainer = ({ children }) => {
         cars,
         title,
         newUser,
-        logIn
+        logIn,
+        modifyCar
     }
 
     return <AppContext.Provider value={context}>

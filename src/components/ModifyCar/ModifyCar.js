@@ -1,35 +1,34 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { Form, FormField, TextInput, Box, Button, FileInput } from 'grommet';
 import { useSnackbar } from 'notistack';
-//import { AppContext } from '../../context';
+import { AppContext } from '../../context';
 import './styles.scss';
 
 export default function ModifyCar() {
-    const [defaultValue, setDefaultValue] = useState({})
-    const modify = true;
-    const carId = 3;
+    const context = useContext(AppContext);
 
-    useEffect(() => {
-        if (modify) {
-            // TODO: GET CAR FROM BACKEND
-        }
-
-        const defaultValue = {
-            brand: 'Mini',
-            model: 'Cooper S',
-            engineNumber: '123',
-            entryKM: '0',
-            buyValue: '60.000',
-            plate: 'SAD 666',
-        }
-        setValue(defaultValue);
-
-    }, [])
-
-    const [value, setValue] = useState(defaultValue);
-    //const context = useContext(AppContext);
+    const [value, setValue] = useState({});
     const [image, setImage] = useState({/* CAR IMAGE */ });
     const { enqueueSnackbar } = useSnackbar();
+
+    const carId = '60720cf19bd354001591f622';
+    const modify = true;
+
+    useEffect(() => {
+        // GET CAR WITH ID
+
+        // SET CAR VALUE WITH CAR INFO
+        const carValue = {
+            brand: 'car brand',
+            model: 'car model',
+            engineNumber: '0',
+            entryKM: '0',
+            buyValue: '0',
+            plate: 'car plate',
+        }
+        setValue(carValue);
+
+    }, [])
 
     useEffect(() => {
         const file = document.querySelector('input[type=file]').files[0];
@@ -49,8 +48,8 @@ export default function ModifyCar() {
 
     const submitHandler = async (e) => {
         e.preventDefault();
-        // TODO: APPLY CAR CHANGES
-        enqueueSnackbar('Cambios guardados.')
+        await context.modifyCar(value.brand, value.model, value.engineNumber, value.entryKM, value.buyValue, value.plate, carId);
+        enqueueSnackbar('Cambios guardados.');
 
     }
 

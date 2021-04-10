@@ -15,3 +15,12 @@ export const listCars = async () => {
         method: "GET",
     })
 }
+
+export const editCar = async (brand, model, engineNumber, entryKM, buyValue, plate, _id) => {
+    return authAxiosCall('car/update', {
+        method: "PUT",
+        body: {
+            brand, model, engineNumber, entryKM, buyValue, plate, _id
+        }
+    })
+}
