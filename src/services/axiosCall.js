@@ -8,10 +8,9 @@ const axiosInstance = axios.create({
 });
 
 const axiosCall = async (path, { query, ...requestOptions }) => {
-    console.log(requestOptions)
     const response = await axiosInstance({
         method: requestOptions.method,
-        url: `https://martinez-rentacar.herokuapp.com/api/v1/${path}`,
+        url: `http://localhost:5000/api/v1/${path}`,
         data: requestOptions.body,
         headers: requestOptions.headers
     })

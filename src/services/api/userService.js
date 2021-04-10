@@ -1,10 +1,10 @@
 import { unauthAxiosCall } from '../axiosCall';
 
-export const createUser = async (firstName, lastName, phone, email, password) => {
+export const createUser = async (firstName, lastName, phone, email, password, role) => {
     return unauthAxiosCall('auth/sign-up', {
         method: "POST",
         body: {
-            firstName, lastName, phone, email, password
+            firstName, lastName, phone, email, password, role
         }
     })
 }

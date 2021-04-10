@@ -20,15 +20,9 @@ export default function CarView({ modify = false, carId = 'null' }) {
   });
   const { enqueueSnackbar } = useSnackbar();
 
-  // const carId = '60720cf19bd354001591f622';
-
   const modifyInitialization = async () => {
     // GET CAR WITH ID
     const car = await context.getCar(carId);
-    console.log(
-      "🚀 ~ file: ModifyCar.js ~ line 20 ~ modifyInitialization ~ car",
-      car
-    );
 
     // SET CAR VALUE WITH CAR INFO
     const carValue = {

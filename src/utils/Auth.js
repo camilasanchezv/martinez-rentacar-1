@@ -53,9 +53,24 @@ export const isLoggedIn = () => {
   return !!currentUser && !!authToken
 }
 
+export const isAdmin = () => {
+  const currentUser = getCurrentUser();
+
+  if (!currentUser) return false
+  return currentUser.roles.includes("ROLE_ADMIN")
+}
+
 export const logOut = () => {
   deleteToken();
   deleteCurrentUser()
 
   window.location.reload();
+}
+
+export const getRoleByUser = () => {
+  const user = getCurrentUser();
+
+  if (!user) return ""
+  if( user.roles.includes("ROLE_ADMIN")) return "Administrador"
+  if( user.roles.includes("ROLE_USER")) return "Empleado"
 }

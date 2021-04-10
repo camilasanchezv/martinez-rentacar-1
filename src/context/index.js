@@ -132,9 +132,9 @@ const AppContextContainer = ({ children }) => {
   };
 
   // NEW USER
-  const newUser = async (firstName, lastName, phone, email, password) => {
+  const newUser = async (firstName, lastName, phone, email, password, role) => {
     setLoading(true);
-    await createUser(firstName, lastName, phone, email, password);
+    await createUser(firstName, lastName, phone, email, password, role);
     setLoading(false);
   };
 

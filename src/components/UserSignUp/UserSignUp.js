@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { Form, FormField, TextInput, Box, Button, Text } from 'grommet';
+import { Form, FormField, TextInput, Box, Button, Select } from 'grommet';
 import { AppContext } from '../../context';
 import { Hide, View } from 'grommet-icons';
 import './styles.scss';
@@ -21,7 +21,7 @@ export default function UserForm() {
 
     const submitHandler = (e) => {
         e.preventDefault();
-        context.newUser(value.firstName, value.lastName, value.phone, value.email, value.password);
+        context.newUser(value.firstName, value.lastName, value.phone, value.email, value.password, value.role);
         setValue(defaultValue);
     }
 
@@ -43,6 +43,13 @@ export default function UserForm() {
                         </FormField>
                         <FormField className="input" label="Teléfono">
                             <TextInput type="number" name="phone" placeholder="26045555" required />
+                        </FormField>
+                        <FormField className="input" label="Rol">
+                            <Select
+                                name="role"
+                                options={['admin', 'user']}
+                                required
+                            />
                         </FormField>
                     </div>
 
