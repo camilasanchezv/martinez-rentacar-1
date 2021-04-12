@@ -3,6 +3,8 @@ import React from "react";
 import { Tooltip } from "..";
 import { withRouter } from "react-router-dom";
 
+import logo from '../../assets/logo.jpg'
+
 import { Sidebar, Avatar, Button, Nav } from "grommet";
 import {
   Group,
@@ -27,7 +29,7 @@ const SidebarNavigation = ({ history }) => {
         background="brand"
         round="small"
         header={
-          <Avatar src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgtUfxmCw61u_2YrfwhAwTjpi51I3nxOgRkA&usqp=CAU" />
+          <Avatar src={logo} />
         }
         footer={
           <Tooltip message="Ayuda">

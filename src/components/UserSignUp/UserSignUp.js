@@ -47,6 +47,7 @@ export default function UserForm() {
                         <FormField className="input" label="Rol">
                             <Select
                                 name="role"
+                                placeholder="Usuario"
                                 options={['admin', 'user']}
                                 required
                             />
@@ -58,7 +59,7 @@ export default function UserForm() {
                             <TextInput name="email" placeholder="agustinfernandez@ejemplo.com" required />
                         </FormField>
                         <FormField className="input" label="Contraseña">
-                            < div className="password-box focus" direction="row" >
+                            <div className="password-box focus" direction="row" >
                                 <TextInput
                                     className="focus"
                                     plain

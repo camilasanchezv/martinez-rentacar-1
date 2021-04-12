@@ -2,7 +2,7 @@ import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import { Car, Customer, ListOfCustomers, ListOfCars, SignUp, CarEdit } from "../screens";
 import { isLoggedIn } from "../utils/Auth";
-
+import logo from '../assets/logo.jpg'
 const PrivateRoute = ({ children: Component, ...rest }) => {
   return (
     <Route {...rest}>
@@ -46,7 +46,7 @@ export default function MainRouter() {
 }
 
 function Home() {
-  return <h2>Martinez Rent a car</h2>;
+  return <img src={logo} style={{width:"100%", marginTop: 12}}/>;
 }
 
 
