@@ -3,6 +3,7 @@ import { Form, FormField, TextInput, Box, Button, FileInput } from "grommet";
 import { useSnackbar } from "notistack";
 import { AppContext } from "../../context";
 import "./styles.scss";
+
 const defaultValue = {
   brand: "",
   model: "",
@@ -11,7 +12,8 @@ const defaultValue = {
   buyValue: "",
   plate: "",
 };
-export default function CarView({ modify = false, carId = 'null' }) {
+
+export default function CarView({ modify = false, car = 'null' }) {
   const context = useContext(AppContext);
 
   const [value, setValue] = useState({});
@@ -20,10 +22,7 @@ export default function CarView({ modify = false, carId = 'null' }) {
   });
   const { enqueueSnackbar } = useSnackbar();
 
-  const modifyInitialization = async () => {
-    // GET CAR WITH ID
-    const car = await context.getCar(carId);
-
+  const modifyInitialization = () => {
     // SET CAR VALUE WITH CAR INFO
     const carValue = {
       brand: car.brand,
@@ -40,7 +39,7 @@ export default function CarView({ modify = false, carId = 'null' }) {
     if (modify) {
       modifyInitialization();
     }
-  }, []);
+  }, [car]);
 
   useEffect(() => {
     const file = document.querySelector("input[type=file]").files[0];
@@ -72,7 +71,7 @@ export default function CarView({ modify = false, carId = 'null' }) {
       value.entryKM,
       value.buyValue,
       value.plate,
-      carId
+      car._id
     );
     enqueueSnackbar("Cambios guardados.");
     modifyInitialization();
