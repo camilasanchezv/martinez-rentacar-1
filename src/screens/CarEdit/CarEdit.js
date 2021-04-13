@@ -12,7 +12,6 @@ export default function CarEdit({ }) {
     useEffect(async () => {
         const res = await context.getCar(id);
         setResponse(res)
-
     }, [])
 
     return (
