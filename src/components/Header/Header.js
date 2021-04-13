@@ -1,22 +1,27 @@
 import { Paragraph, Menu, Header as GrommetHeader } from "grommet";
 import React, { useContext, useMemo, useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import { AppContext } from "../../context";
 import { getCurrentUser, logOut, getRoleByUser, isAdmin } from "../../utils/Auth";
 import "./styles.scss";
 
 export default function Header() {
+  const history = useHistory();
+  const handleNavigate = (path) => history.push(path);
+
   const [user, setUser] = useState();
   const { title } = useContext(AppContext);
   const getUser = async () => setUser(getCurrentUser());
   const userIsAdmin = useMemo(() => isAdmin(), [user])
+
   useEffect(() => {
-      getUser();
+    getUser();
   }, [])
 
   const adminMenuItems = []
 
-  if( userIsAdmin ) {
-    adminMenuItems.push({ label: "Ajustes" })
+  if (userIsAdmin) {
+    adminMenuItems.push({ label: "Ajustes", onClick: () => handleNavigate("/settings") })
   }
 
   return (

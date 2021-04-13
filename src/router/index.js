@@ -33,6 +33,9 @@ export default function MainRouter() {
         <ListOfCars />
       </PrivateRoute>
 
+      <PrivateRoute path="/settings">
+        <p>settings page</p>
+      </PrivateRoute>
 
       <PrivateRoute path="/car-edit/:id">
         <CarEdit />
@@ -46,7 +49,7 @@ export default function MainRouter() {
 }
 
 function Home() {
-  return <img src={logo} style={{width:"100%", marginTop: 12}}/>;
+  return <img src={logo} style={{ width: "100%", marginTop: 12 }} />;
 }
 
 
