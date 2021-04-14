@@ -20,9 +20,9 @@ export default function Header() {
 
   const adminMenuItems = []
 
-  if (userIsAdmin) {
-    adminMenuItems.push({ label: "Ajustes", onClick: () => handleNavigate("/settings") })
-  }
+  // if (userIsAdmin) {
+  //   adminMenuItems.push({ label: "Ajustes", onClick: () => handleNavigate("/settings") })
+  // }
 
   return (
     <GrommetHeader background="white" className="header">
@@ -36,6 +36,7 @@ export default function Header() {
           label={`${user?.firstName} (${getRoleByUser(user)})`}
           items={[
             ...adminMenuItems,
+            { label: "Ajustes", onClick: () => handleNavigate("/settings") },
             { label: "Cerrar Sesion", onClick: logOut },
           ]}
         />

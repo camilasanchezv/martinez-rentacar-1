@@ -6,6 +6,7 @@ import ListOfCustomers from "./ListOfCustomers";
 import ListOfCars from "./ListOfCars";
 import SignUp from "./SignUp";
 import Login from "./Login";
+import Settings from "./Settings";
 
 export {
     Welcome,
@@ -15,5 +16,6 @@ export {
     ListOfCustomers,
     ListOfCars,
     SignUp,
-    Login
+    Login,
+    Settings
 };

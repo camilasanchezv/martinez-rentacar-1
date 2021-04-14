@@ -1,5 +1,6 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Form, FormField, TextInput, Box, Button, Select } from 'grommet';
+import { useSnackbar } from "notistack";
 import { AppContext } from '../../context';
 import { Hide, View } from 'grommet-icons';
 import './styles.scss';
@@ -12,16 +13,56 @@ const defaultValue = {
     password: ''
 }
 
-export default function UserForm() {
-    const [value, setValue] = useState(defaultValue);
+export default function UserForm({ modify = false, user = 'null' }) {
+    const context = useContext(AppContext);
+    const { enqueueSnackbar } = useSnackbar();
 
+    const [value, setValue] = useState(defaultValue);
     const [reveal, setReveal] = React.useState(false);
 
-    const context = useContext(AppContext);
+    const modifyInitialization = () => {
+        // SET USER VALUE WITH CAR INFO
+        const userValue = {
+            firstNAme: user.firstNAme,
+            lastName: user.lastName,
+            email: user.email,
+            phone: user.phone,
+            password: user.password,
+        };
+        setValue(userValue);
+    };
 
-    const submitHandler = (e) => {
+    useEffect(() => {
+        if (modify) {
+            modifyInitialization();
+        }
+    }, [user]);
+
+    const submitHandlerModify = async (e) => {
         e.preventDefault();
-        context.newUser(value.firstName, value.lastName, value.phone, value.email, value.password, value.role);
+        await context.modifyUser(
+            value.firstName,
+            value.lastName,
+            value.phone,
+            value.email,
+            value.password,
+            value.role
+        );
+        enqueueSnackbar("Cambios guardados.");
+        modifyInitialization();
+    };
+
+    const submitHandlerCreate = async (e) => {
+        e.preventDefault();
+        await context.newUser(
+            value.firstName,
+            value.lastName,
+            value.phone,
+            value.email,
+            value.password,
+            value.role
+        );
+        enqueueSnackbar("Nuevo usuario registrado.");
         setValue(defaultValue);
     }
 
@@ -31,7 +72,7 @@ export default function UserForm() {
                 className="form"
                 value={value}
                 onChange={nextValue => setValue(nextValue)}
-                onSubmit={(e) => submitHandler(e)}
+                onSubmit={modify ? submitHandlerModify : submitHandlerCreate}
             >
                 <div className="user-form">
                     <div className="form-column">
@@ -43,14 +84,6 @@ export default function UserForm() {
                         </FormField>
                         <FormField className="input" label="Teléfono">
                             <TextInput type="number" name="phone" placeholder="26045555" required />
-                        </FormField>
-                        <FormField className="input" label="Rol">
-                            <Select
-                                name="role"
-                                placeholder="Usuario"
-                                options={['admin', 'user']}
-                                required
-                            />
                         </FormField>
                     </div>
 
@@ -74,11 +107,19 @@ export default function UserForm() {
                                 />
                             </div >
                         </FormField >
+                        {!modify && <FormField className="input" label="Rol">
+                            <Select
+                                name="role"
+                                placeholder="Usuario"
+                                options={['admin', 'user']}
+                                required
+                            />
+                        </FormField>}
                     </div >
                 </div >
 
                 <Box className="button" direction="row" gap="medium">
-                    <Button type="submit" label="Registrar" primary />
+                    <Button type="submit" label={modify ? "Guardar" : "Registrar"} primary />
                 </Box>
             </Form >
         </div >

@@ -4,7 +4,7 @@ import './styles.scss';
 import { useParams } from "react-router-dom";
 import { AppContext } from '../../context';
 
-export default function CarEdit({ }) {
+export default function CarEdit() {
     const context = useContext(AppContext)
     const [response, setResponse] = useState();
     const { id } = useParams();
