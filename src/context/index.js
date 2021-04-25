@@ -113,10 +113,15 @@ const AppContextContainer = ({ children }) => {
 
   // GET CAR
   const getCar = async (id) => {
-    setLoading(true);
-    const car = await getCarService(id);
-    setLoading(false);
-    return car.data;
+    setLoading("Obteniendo informacion del auto...");
+    try {
+      const car = await getCarService(id);
+      setLoading(false);
+      return car.data;
+    } catch (error) {
+      setLoading(false);
+      return { error: 'Este auto no existe.' };
+    }
   };
   // MODIFY CAR
   const modifyCar = async (
