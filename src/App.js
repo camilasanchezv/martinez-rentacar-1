@@ -3,8 +3,8 @@ import { Grommet } from "grommet";
 import "typeface-roboto";
 import MainRouter from "./router";
 import SidebarNavigation from "./components/Sidebar/Sidebar";
-import { SnackbarProvider } from 'notistack';
-import Slide from '@material-ui/core/Slide';
+import { SnackbarProvider } from "notistack";
+import Slide from "@material-ui/core/Slide";
 
 import { Router, Switch, Route } from "react-router-dom";
 import { createBrowserHistory } from "history";
@@ -74,24 +74,22 @@ const AppRouter = () => {
 function App() {
   return (
     <Router history={history}>
-      <AppContextContainer>
-        <Loading />
-        <Grommet theme={theme}>
-
-          <SnackbarProvider
-            maxSnack={3}
-            anchorOrigin={{
-              vertical: 'top',
-              horizontal: 'left',
-            }}
-            TransitionComponent={Slide}
-          >
+      <SnackbarProvider
+        maxSnack={3}
+        anchorOrigin={{
+          vertical: "top",
+          horizontal: "left",
+        }}
+        TransitionComponent={Slide}
+      >
+        <AppContextContainer>
+          <Loading />
+          <Grommet theme={theme}>
             <AppRouter />
-          </SnackbarProvider>
-
-        </Grommet>
-      </AppContextContainer>
-    </Router >
+          </Grommet>
+        </AppContextContainer>
+      </SnackbarProvider>
+    </Router>
   );
 }
 

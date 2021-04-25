@@ -11,6 +11,7 @@ import { createUser, signIn } from "../services/api/userService";
 import { useHistory } from "react-router-dom";
 import { setCurrentUser, setToken } from "../utils/Auth";
 import { uploadFile } from "../services/api/fileService";
+import { useSnackbar } from "notistack";
 export const AppContext = createContext(null);
 
 // TITLES
@@ -46,7 +47,10 @@ const getTitleByPathname = (path) => {
 
 // CONTEXT
 const AppContextContainer = ({ children }) => {
+  const { enqueueSnackbar } = useSnackbar();
+  
   const [title, setTitle] = useState("");
+
 
   const history = useHistory();
   const [loading, setLoading] = useState(false);
@@ -136,6 +140,7 @@ const AppContextContainer = ({ children }) => {
   ) => {
     setLoading(true);
     await editCar(brand, model, engineNumber, entryKM, buyValue, plate, images, _id);
+    enqueueSnackbar("El auto ha sido modificado con exito!")
     setLoading(false);
   };
 
