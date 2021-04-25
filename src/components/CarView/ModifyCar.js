@@ -23,7 +23,7 @@ const defaultValue = {
   plate: "",
 };
 
-export default function CarView({ modify = false, car = 'null'}) {
+export default function CarView({ modify = false, car = 'null', handleSubmit = null}) {
   const context = useContext(AppContext);
 
   const [value, setValue] = useState({});
@@ -49,6 +49,8 @@ export default function CarView({ modify = false, car = 'null'}) {
 
     setValue(carValue);
   };
+
+  const submitHandler = () => handleSubmit(value)
 
   useEffect(() => {
     if (modify) {
@@ -76,31 +78,6 @@ export default function CarView({ modify = false, car = 'null'}) {
       );
     }
   }, [value.image]);
-
-  const submitHandlerModify = async (e) => {
-    e.preventDefault();
-
-    const imagesUrls = [];
-    if (value.images) {
-      for (let i of value.images) {
-        const fileURL = await context.uploadFileHandler(i);
-        imagesUrls.push(fileURL);
-      }
-    }
-
-    await context.modifyCar(
-      value.brand,
-      value.model,
-      value.engineNumber,
-      value.entryKM,
-      value.buyValue,
-      value.plate,
-      imagesUrls,
-      car._id
-    );
-    enqueueSnackbar("Cambios guardados.");
-    modifyInitialization();
-  };
 
   const submitHandlerCreate = async (e) => {
     e.preventDefault();
@@ -138,7 +115,7 @@ export default function CarView({ modify = false, car = 'null'}) {
         className="form"
         value={value}
         onChange={(nextValue) => setValue(nextValue)}
-        onSubmit={modify ? submitHandlerModify : submitHandlerCreate}
+        onSubmit={modify ? submitHandler : submitHandlerCreate}
       >
         <div className="car-form">
           <div className="form-column">

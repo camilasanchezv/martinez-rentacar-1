@@ -9,9 +9,31 @@ export default function CarEdit({ }) {
     const [response, setResponse] = useState();
     const { id } = useParams();
 
+
+    const submitHandlerModify = async (value) => {
+    
+        const imagesUrls = [];
+        if (value.images) {
+          for (let i of value.images) {
+            const fileURL = await context.uploadFileHandler(i);
+            imagesUrls.push(fileURL);
+          }
+        }
+    
+        await context.modifyCar(
+          value.brand,
+          value.model,
+          value.engineNumber,
+          value.entryKM,
+          value.buyValue,
+          value.plate,
+          imagesUrls,
+          id
+        );
+      };
+
     useEffect(async () => {
         const res = await context.getCar(id);
-
         setResponse(res)
     }, [])
 
@@ -19,7 +41,7 @@ export default function CarEdit({ }) {
         <Container>
             { response && response.error
                 ? <Error error={response.error} />
-                : <ModifyCar car={response} modify={true} />
+                : <ModifyCar car={response} modify={true} handleSubmit={submitHandlerModify}/>
             }
         </Container >
     )
