@@ -10,6 +10,7 @@ import { createUser, signIn } from "../services/api/userService";
 
 import { useHistory } from "react-router-dom";
 import { setCurrentUser, setToken } from "../utils/Auth";
+import { uploadFile } from "../services/api/fileService";
 export const AppContext = createContext(null);
 
 // TITLES
@@ -102,10 +103,11 @@ const AppContextContainer = ({ children }) => {
     engineNumber,
     entryKM,
     buyValue,
-    plate
+    plate,
+    images
   ) => {
     setLoading(true);
-    await createCar(brand, model, engineNumber, entryKM, buyValue, plate);
+    await createCar(brand, model, engineNumber, entryKM, buyValue, plate, images);
     setLoading(false);
   };
 
@@ -124,10 +126,11 @@ const AppContextContainer = ({ children }) => {
     entryKM,
     buyValue,
     plate,
+    images,
     _id
   ) => {
     setLoading(true);
-    await editCar(brand, model, engineNumber, entryKM, buyValue, plate, _id);
+    await editCar(brand, model, engineNumber, entryKM, buyValue, plate, images, _id);
     setLoading(false);
   };
 
@@ -161,6 +164,14 @@ const AppContextContainer = ({ children }) => {
     setLoading(false);
   };
 
+
+  const uploadFileHandler = async file => {
+    setLoading(`Subiendo... ${file.name}`)
+    const fileResponse = await uploadFile(file);
+    setLoading(false)
+    return fileResponse.data.data.url;
+  }
+
   const context = {
     setCustomers,
     getCustomersList,
@@ -174,7 +185,8 @@ const AppContextContainer = ({ children }) => {
     newUser,
     logIn,
     modifyCar,
-    getCar
+    getCar,
+    uploadFileHandler
   };
 
   return <AppContext.Provider value={context}>{children}</AppContext.Provider>;

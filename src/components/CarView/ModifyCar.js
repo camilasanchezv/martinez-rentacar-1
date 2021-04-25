@@ -1,8 +1,19 @@
 import React, { useState, useContext, useEffect } from "react";
-import { Form, FormField, TextInput, Box, Button, FileInput } from "grommet";
+import {
+  Form,
+  FormField,
+  TextInput,
+  Text,
+  Box,
+  Button,
+  FileInput,
+  Carousel,
+  Image,
+} from "grommet";
 import { useSnackbar } from "notistack";
 import { AppContext } from "../../context";
 import "./styles.scss";
+import { uploadFile } from "../../services/api/fileService";
 const defaultValue = {
   brand: "",
   model: "",
@@ -11,13 +22,15 @@ const defaultValue = {
   buyValue: "",
   plate: "",
 };
-export default function CarView({ modify = false, carId = 'null' }) {
+export default function CarView({ modify = false, carId = "null" }) {
   const context = useContext(AppContext);
 
   const [value, setValue] = useState({});
   const [image, setImage] = useState({
     /* CAR IMAGE */
   });
+
+  const [images, setImages] = useState([]);
   const { enqueueSnackbar } = useSnackbar();
 
   const modifyInitialization = async () => {
@@ -33,6 +46,9 @@ export default function CarView({ modify = false, carId = 'null' }) {
       buyValue: car.buyValue,
       plate: car.plate,
     };
+
+    setImages(car.images);
+
     setValue(carValue);
   };
 
@@ -65,6 +81,15 @@ export default function CarView({ modify = false, carId = 'null' }) {
 
   const submitHandlerModify = async (e) => {
     e.preventDefault();
+
+    const imagesUrls = [];
+    if (value.images) {
+      for (let i of value.images) {
+        const fileURL = await context.uploadFileHandler(i);
+        imagesUrls.push(fileURL);
+      }
+    }
+
     await context.modifyCar(
       value.brand,
       value.model,
@@ -72,6 +97,7 @@ export default function CarView({ modify = false, carId = 'null' }) {
       value.entryKM,
       value.buyValue,
       value.plate,
+      imagesUrls,
       carId
     );
     enqueueSnackbar("Cambios guardados.");
@@ -80,6 +106,15 @@ export default function CarView({ modify = false, carId = 'null' }) {
 
   const submitHandlerCreate = async (e) => {
     e.preventDefault();
+
+    const imagesUrls = [];
+    if (value.images) {
+      for (let i of value.images) {
+        const fileURL = await context.uploadFileHandler(i);
+        imagesUrls.push(fileURL);
+      }
+    }
+
     await context.newCar(
       value.brand,
       value.model,
@@ -87,7 +122,7 @@ export default function CarView({ modify = false, carId = 'null' }) {
       value.entryKM,
       value.buyValue,
       value.plate,
-      value.image
+      imagesUrls
     );
     enqueueSnackbar("Nuevo auto registrado.");
 
@@ -118,8 +153,6 @@ export default function CarView({ modify = false, carId = 'null' }) {
             <FormField className="input" label="Número de Motor">
               <TextInput type="number" name="engineNumber" />
             </FormField>
-          </div>
-          <div className="form-column">
             <FormField className="input" label="Matrícula">
               <TextInput name="plate" />
             </FormField>
@@ -129,28 +162,58 @@ export default function CarView({ modify = false, carId = 'null' }) {
             <FormField className="input" label="Valor de Compra (USD)">
               <TextInput type="number" name="buyValue" />
             </FormField>
+
+            <Box className="button" direction="row" gap="medium">
+              {modify ? (
+                <Button type="submit" label="Guardar" primary />
+              ) : (
+                <>
+                  <Button type="submit" label="Enviar" primary />
+                  <Button className="reset" type="reset" label="Borrar" />
+                </>
+              )}
+            </Box>
           </div>
-          <div className="form-column last-form">
-            <div className="picture-form">
-              <Box className="input" direction="row" gap="small">
-                <img className="image" src={image} />
+          <div className="form-column">
+            {modify && (
+              <Box height="medium" width="100%" overflow="hidden">
+                <Carousel fill>
+                  {images.map((i) => (
+                    <Image fit="cover" src={i} width="100%" />
+                  ))}
+                </Carousel>
               </Box>
-              <div className="file-input">
-                <FileInput className="file-input" type="file" name="image" />
-              </div>
+            )}
+            <div className="image-uploader-container">
+              <FileInput
+                name="images"
+                className="image-uploader"
+                multiple
+                renderFile={(file) => {
+                  return (
+                    <Box
+                      direction="row"
+                      gap="small"
+                      className="image-uploader-preview-container"
+                    >
+                      <img
+                        src={
+                          typeof file === "string"
+                            ? file
+                            : URL.createObjectURL(file)
+                        }
+                        alt={file.name}
+                        className="image-uploader-preview"
+                      />
+                      <Text weight="bold">{file.name}</Text>
+                      <Text color="text-weak">{file.size} bytes</Text>
+                    </Box>
+                  );
+                }}
+              />
             </div>
           </div>
         </div>
-        <Box className="button" direction="row" gap="medium">
-          {modify ? (
-            <Button type="submit" label="Guardar" primary />
-          ) : (
-            <>
-              <Button type="submit" label="Enviar" primary />
-              <Button className="reset" type="reset" label="Borrar" />
-            </>
-          )}
-        </Box>
       </Form>
     </div>
   );

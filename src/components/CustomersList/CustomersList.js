@@ -26,6 +26,7 @@ export default function CustomersList() {
     const sortTexts = (a, b, prop) => a[prop].toLowerCase() > b[prop].toLowerCase() ? 1 : -1;
     const sortCustomers = sorting => context.customers.map(a => a).sort(sorting);
     const sortBy = prop => setData(sortCustomers((a, b) => sortTexts(a, b, prop)));
+    
 
     return (
         <div className="container" >

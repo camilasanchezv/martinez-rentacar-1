@@ -1,14 +1,26 @@
-import React, { useContext } from 'react';
-import { Spinner } from 'grommet';
-import './styles.scss'
-import { AppContext } from '../../context';
+import React, { useContext } from "react";
+import Loader from "react-loader-spinner";
+
+import "./styles.scss";
+import { AppContext } from "../../context";
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+import { Text } from "grommet";
 
 export default function Loading() {
-    const { loading } = useContext(AppContext);
+  const { loading } = useContext(AppContext);
 
+  const message = loading && loading !== "" ? loading : "Cargando"
 
-    return (loading ? <div className="loading-container">
-        <Spinner size={"small"} className="spinner" />
-    </div> : null
-    )
+  return loading ? (
+    <div className="loading-container">
+      <Loader
+        type="Puff"
+        color="#fff"
+        height={100}
+        width={100}
+      />
+
+      <Text color="#fff" margin="small">{message}</Text>
+    </div>
+  ) : null;
 }

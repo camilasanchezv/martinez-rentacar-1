@@ -23,7 +23,7 @@ export default function CarsList() {
         <div className="filters">
           <Select
             placeholder="Ordenar por"
-            options={["Año del model", "Fecha de ingreso", "Marca"]}
+            options={["Año del modelo", "Fecha de ingreso", "Marca"]}
           />
           <Select
             placeholder="Solo ver"

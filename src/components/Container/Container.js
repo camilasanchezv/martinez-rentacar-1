@@ -10,6 +10,7 @@ export default function Container({ children, ...props }) {
             pad="medium"
             className="Container"
             pad={'medium'}
+            overflow="auto"
             {...props}
         >
             {children}
