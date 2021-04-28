@@ -1,6 +1,6 @@
 import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
-import { Car, Customer, ListOfCustomers, ListOfCars, SignUp, CarEdit } from "../screens";
+import { Car, Customer, ListOfCustomers, ListOfCars, SignUp, CarEdit, CustomerInfo } from "../screens";
 import { isLoggedIn } from "../utils/Auth";
 import logo from '../assets/logo.jpg'
 const PrivateRoute = ({ children: Component, ...rest }) => {
@@ -38,6 +38,10 @@ export default function MainRouter() {
         <CarEdit />
       </PrivateRoute>
 
+      <PrivateRoute path="/customer-info">
+        <CustomerInfo />
+      </PrivateRoute>
+
       <PrivateRoute path="/">
         <Home />
       </PrivateRoute>
@@ -46,7 +50,7 @@ export default function MainRouter() {
 }
 
 function Home() {
-  return <img src={logo} style={{width:"100%", marginTop: 12}}/>;
+  return <img src={logo} style={{ width: "100%", marginTop: 12 }} />;
 }
 
 
