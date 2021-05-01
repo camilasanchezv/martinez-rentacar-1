@@ -1,5 +1,5 @@
 import React, { createContext, useEffect, useState } from "react";
-import { listCustomers, createCustomer } from "../services/api/customerService";
+import { listCustomers, createCustomer, getCustomerService } from "../services/api/customerService";
 import {
   createCar,
   listCars,
@@ -48,7 +48,7 @@ const getTitleByPathname = (path) => {
 // CONTEXT
 const AppContextContainer = ({ children }) => {
   const { enqueueSnackbar } = useSnackbar();
-  
+
   const [title, setTitle] = useState("");
 
 
@@ -75,6 +75,18 @@ const AppContextContainer = ({ children }) => {
     setCustomers(data);
 
     setLoading(false);
+  };
+  //GET (ONE) CUSTOMER
+  const getCustomer = async (id) => {
+    setLoading("Obteniendo informacion del cliente...");
+    try {
+      const customer = await getCustomerService(id);
+      setLoading(false);
+      return customer.data;
+    } catch (error) {
+      setLoading(false);
+      return { error: 'Este cliente no existe.' };
+    }
   };
   // NEW CUSTOMER
   const newCustomer = async (
@@ -185,6 +197,7 @@ const AppContextContainer = ({ children }) => {
   const context = {
     setCustomers,
     getCustomersList,
+    getCustomer,
     loading,
     newCustomer,
     customers,

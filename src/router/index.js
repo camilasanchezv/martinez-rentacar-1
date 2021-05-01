@@ -38,7 +38,7 @@ export default function MainRouter() {
         <CarEdit />
       </PrivateRoute>
 
-      <PrivateRoute path="/customer-info">
+      <PrivateRoute path="/customer-info/:id">
         <CustomerInfo />
       </PrivateRoute>
 

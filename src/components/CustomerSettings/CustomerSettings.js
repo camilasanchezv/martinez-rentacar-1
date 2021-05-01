@@ -3,11 +3,20 @@ import { Heading, Tab, Tabs, Text } from 'grommet';
 
 import './styles.scss';
 
-export default function CustomerSettings({ }) {
+export default function CustomerSettings({ customer = null }) {
 
+    if (!customer) {
+        customer = {
+            firstName: '',
+            lastName: '',
+            ci: '',
+            phone: '',
+            email: '',
+        }
+    }
 
     return (
-        <div className="customer-settings">
+        < div className="customer-settings" >
             <Heading size="xsmall" color="brand">Customer Name</Heading>
             <Tabs alignControls="start">
                 <Tab title="Información">
@@ -16,25 +25,27 @@ export default function CustomerSettings({ }) {
                             <div className="title"><Text color="brand">Información Personal</Text></div>
                             <div className="information-box">
                                 <Text color="brand">Nombre Completo</Text>
-                                <Text size="large">Agustín Fernández</Text>
+                                <Text size="large">{customer.firstName + ' ' + customer.lastName}</Text>
                             </div>
                             <div className="information-box">
                                 <Text color="brand">Cédula de Identidad</Text>
-                                <Text size="large">29834729</Text>
+                                <Text size="large">{customer.ci}</Text>
                             </div>
                         </div>
                         <div className="information-container">
                             <div className="title"><Text color="brand">Contacto</Text></div>
                             <div className="information-box">
                                 <Text color="brand">Email</Text>
-                                <Text size="large">elagustodopiola@gmail.com</Text>
+                                <Text size="large">{customer.email}</Text>
                             </div>
                             <div className="information-box">
                                 <Text color="brand">Telefono</Text>
-                                <Text size="large">24329847</Text>
+                                <Text size="large">{customer.phone}</Text>
                             </div>
                         </div>
                     </div>
+                </Tab>
+                <Tab title="Documentos">
                     <div className="documents-container">
                         <div className="title"><Text color="brand">Documentos</Text></div>
                     </div>
@@ -45,6 +56,6 @@ export default function CustomerSettings({ }) {
                     </div>
                 </Tab>
             </Tabs>
-        </div>
+        </div >
     )
 }

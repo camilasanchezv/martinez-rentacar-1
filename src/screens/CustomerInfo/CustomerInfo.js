@@ -5,23 +5,21 @@ import { AppContext } from '../../context';
 
 import './styles.scss';
 
-export default function CarEdit({ }) {
-
+export default function CustomerInfo({ }) {
     const context = useContext(AppContext)
-    const [response, setResponse] = useState();
+    const [response, setResponse] = useState(null);
     const { id } = useParams();
 
-
     useEffect(async () => {
-        //const res = await context.getCustomer(id);
-        //setResponse(res)
+        const res = await context.getCustomer(id);
+        setResponse(res)
     }, [])
 
     return (
         <Container>
-            { response && !response.error
+            { response && response.error
                 ? <Error error={response.error} />
-                : <CustomerSettings />
+                : <CustomerSettings customer={response} />
             }
-        </Container >)
+        </Container>)
 }

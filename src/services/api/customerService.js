@@ -1,4 +1,4 @@
-import { unauthAxiosCall } from '../axiosCall';
+import { authAxiosCall, unauthAxiosCall } from '../axiosCall';
 
 export const listCustomers = async () => {
     return unauthAxiosCall('customer/list', {
@@ -12,6 +12,12 @@ export const createCustomer = async (firstName, lastName, ci, phone, email, birt
         body: {
             firstName, lastName, ci, phone, email, birthDate
         }
+    })
+}
+
+export const getCustomerService = async (id) => {
+    return authAxiosCall(`customer/${id}`, {
+        method: "GET",
     })
 }
 
