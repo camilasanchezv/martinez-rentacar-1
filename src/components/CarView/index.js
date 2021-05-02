@@ -1,3 +1,3 @@
-import ModifyCar from './ModifyCar';
+import CarView from "./CarView";
 
-export default ModifyCar
+export default CarView

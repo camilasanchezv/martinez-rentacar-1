@@ -127,9 +127,9 @@ const AppContextContainer = ({ children }) => {
     setLoading(false);
   };
 
-  // GET CAR
+  // GET (ONE) CAR
   const getCar = async (id) => {
-    setLoading("Obteniendo informacion del auto...");
+    setLoading("Obteniendo información del auto...");
     try {
       const car = await getCarService(id);
       setLoading(false);

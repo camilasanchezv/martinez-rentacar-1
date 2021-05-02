@@ -69,12 +69,12 @@ const SidebarNavigation = ({ history }) => {
           <Tooltip message="Lista de Autos">
             <Button
               className="nav-button"
-              onClick={() => handleNavigate("/cars-list")}
+              onClick={() => handleNavigate("/car/list")}
               icon={<List />}
               hoverIndicator
             />
           </Tooltip>
-          { userIsAdmin && (
+          {userIsAdmin && (
             <Tooltip message="Nuevo Usuario">
               <Button
                 className="nav-button"

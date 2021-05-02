@@ -7,6 +7,7 @@ import ListOfCars from "./ListOfCars";
 import SignUp from "./SignUp";
 import Login from "./Login";
 import CustomerInfo from "./CustomerInfo";
+import CarInfo from "./CarInfo";
 
 export {
     Welcome,
@@ -18,4 +19,5 @@ export {
     SignUp,
     Login,
     CustomerInfo,
+    CarInfo
 };

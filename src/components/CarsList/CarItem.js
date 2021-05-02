@@ -5,7 +5,7 @@ export default function CarItem({ car: { plate, brand, model, images, _id } }) {
   const history = useHistory();
 
   const handleView = () => {
-    history.push(`/car-edit/${_id}`);
+    history.push(`/car/edit/${_id}`);
   };
 
   return (

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Heading, Tab, Tabs, Text } from 'grommet';
+import { Box, FileInput, Heading, Tab, Tabs, Text, Carousel, Image } from 'grommet';
 
 import './styles.scss';
 
@@ -47,7 +47,6 @@ export default function CustomerSettings({ customer = null }) {
                 </Tab>
                 <Tab title="Documentos">
                     <div className="documents-container">
-                        <div className="title"><Text color="brand">Documentos</Text></div>
                     </div>
                 </Tab>
                 <Tab title="Reservas">

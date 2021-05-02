@@ -23,7 +23,7 @@ const defaultValue = {
   plate: "",
 };
 
-export default function CarView({ modify = false, car = 'null', handleSubmit = null}) {
+export default function ModifyCar({ modify = false, car = 'null', handleSubmit = null }) {
   const context = useContext(AppContext);
 
   const [value, setValue] = useState({});

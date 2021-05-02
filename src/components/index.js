@@ -11,8 +11,9 @@ import CustomersList from './CustomersList';
 import CarsList from './CarsList';
 import UserSignUp from './UserSignUp';
 import UserLogin from './UserLogin';
-import ModifyCar from './CarView';
+import ModifyCar from './CarModify';
 import CustomerSettings from './CustomerSettings';
+import CarView from './CarView';
 
 export {
     Title,
@@ -29,5 +30,6 @@ export {
     UserSignUp,
     UserLogin,
     ModifyCar,
-    CustomerSettings
+    CustomerSettings,
+    CarView
 }
