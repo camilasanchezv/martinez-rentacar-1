@@ -147,11 +147,11 @@ const AppContextContainer = ({ children }) => {
     entryKM,
     buyValue,
     plate,
-    images,
+    documents,
     _id
   ) => {
     setLoading(true);
-    await editCar(brand, model, engineNumber, entryKM, buyValue, plate, images, _id);
+    await editCar(brand, model, engineNumber, entryKM, buyValue, plate, documents, _id);
     enqueueSnackbar("El auto ha sido modificado con exito!")
     setLoading(false);
   };
@@ -191,7 +191,7 @@ const AppContextContainer = ({ children }) => {
     setLoading(`Subiendo... ${file.name}`)
     const fileResponse = await uploadFile(file);
     setLoading(false)
-    return fileResponse.data.data.url;
+    return fileResponse.data;
   }
 
   const context = {

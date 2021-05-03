@@ -1,11 +1,11 @@
 import { unauthAxiosCall, authAxiosCall } from '../axiosCall';
 
 
-export const createCar = async (brand, model, engineNumber, entryKM, buyValue, plate, images) => {
+export const createCar = async (brand, model, engineNumber, entryKM, buyValue, plate, documents) => {
     return unauthAxiosCall('car/create', {
         method: "POST",
         body: {
-            brand, model, engineNumber, entryKM, buyValue, plate, images
+            brand, model, engineNumber, entryKM, buyValue, plate, documents
         }
     })
 }
@@ -16,11 +16,11 @@ export const listCars = async () => {
     })
 }
 
-export const editCar = async (brand, model, engineNumber, entryKM, buyValue, plate, images, _id) => {
+export const editCar = async (brand, model, engineNumber, entryKM, buyValue, plate, documents, _id) => {
     return authAxiosCall('car/update', {
         method: "PUT",
         body: {
-            brand, model, engineNumber, entryKM, buyValue, plate, images, _id
+            brand, model, engineNumber, entryKM, buyValue, plate, documents, _id
         }
     })
 }

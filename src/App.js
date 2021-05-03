@@ -46,6 +46,7 @@ const theme = {
   },
 };
 
+
 const MainComponent = () => {
   return (
     <div className="app-container">

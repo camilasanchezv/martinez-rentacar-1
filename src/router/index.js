@@ -20,6 +20,9 @@ export default function MainRouter() {
       <PrivateRoute path="/sign-up">
         <SignUp />
       </PrivateRoute>
+      <PrivateRoute path="/customer/:id">
+        <CustomerInfo />
+      </PrivateRoute>
       <PrivateRoute path="/customer">
         <Customer />
       </PrivateRoute>
@@ -27,7 +30,7 @@ export default function MainRouter() {
         <ListOfCustomers />
       </PrivateRoute>
 
-      <PrivateRoute path="/car/edit/:id">
+      <PrivateRoute path="/car/:id/edit">
         <CarEdit />
       </PrivateRoute>
 
@@ -43,9 +46,6 @@ export default function MainRouter() {
         <Car />
       </PrivateRoute>
 
-      <PrivateRoute path="/customer-info/:id">
-        <CustomerInfo />
-      </PrivateRoute>
 
       <PrivateRoute path="/">
         <Home />

@@ -82,11 +82,11 @@ export default function ModifyCar({ modify = false, car = 'null', handleSubmit =
   const submitHandlerCreate = async (e) => {
     e.preventDefault();
 
-    const imagesUrls = [];
+    const documents = [];
     if (value.images) {
       for (let i of value.images) {
-        const fileURL = await context.uploadFileHandler(i);
-        imagesUrls.push(fileURL);
+        const document = await context.uploadFileHandler(i);
+        documents.push(document._id);
       }
     }
 
@@ -97,7 +97,7 @@ export default function ModifyCar({ modify = false, car = 'null', handleSubmit =
       value.entryKM,
       value.buyValue,
       value.plate,
-      imagesUrls
+      documents
     );
     enqueueSnackbar("Nuevo auto registrado.");
 

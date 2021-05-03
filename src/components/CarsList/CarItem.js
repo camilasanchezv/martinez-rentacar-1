@@ -27,7 +27,7 @@ export default function CarItem({ car: { plate, brand, model, images, _id } }) {
       <Box height="small" width="medium" overflow="hidden">
         <Carousel fill>
           {images.map((i) => (
-            <Image fit="cover" src={i} width="100%" />
+            <Image fit="cover" src={i.url} width="100%" />
           ))}
         </Carousel>
       </Box>

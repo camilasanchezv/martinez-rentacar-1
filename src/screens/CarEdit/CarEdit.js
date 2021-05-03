@@ -12,11 +12,11 @@ export default function CarEdit({ }) {
 
     const submitHandlerModify = async (value) => {
     
-        const imagesUrls = [];
+        const documentsIds = [];
         if (value.images) {
           for (let i of value.images) {
-            const fileURL = await context.uploadFileHandler(i);
-            imagesUrls.push(fileURL);
+            const document = await context.uploadFileHandler(i);
+            documentsIds.push(document._id);
           }
         }
     
@@ -27,7 +27,7 @@ export default function CarEdit({ }) {
           value.entryKM,
           value.buyValue,
           value.plate,
-          imagesUrls,
+          documentsIds,
           id
         );
       };
